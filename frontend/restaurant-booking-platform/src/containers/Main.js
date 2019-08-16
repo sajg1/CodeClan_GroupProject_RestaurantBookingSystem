@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React from 'react';
-import BookingForm from '../components/BookingForm';
-import BookingList from '../components/BookingList';
-
-
-=======
+import BookingForm from '../components/BookingsForm';
+import BookingList from '../components/BookingsList';
 import React, {Component} from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
@@ -25,6 +20,5 @@ class Main extends Component {
     )
   }
 }
->>>>>>> 8cd0cde882694233beef93ad2028d8292bb30fa4
 
 export default Main;
