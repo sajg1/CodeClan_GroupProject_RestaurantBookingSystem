@@ -1,5 +1,6 @@
-import BookingForm from '../components/BookingsForm';
+import BookingsForm from '../components/BookingsForm';
 import BookingsList from '../components/BookingsList';
+import GuestsList from '../components/GuestsList';
 import Home from '../components/Home';
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -18,6 +19,7 @@ class Main extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/bookings" component={BookingsList} />
+            <Route path="/guests" component={GuestsList} />
           </Switch>
         </React.Fragment>
       </Router>
