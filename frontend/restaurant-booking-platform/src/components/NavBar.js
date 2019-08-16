@@ -9,6 +9,9 @@ const NavBar = () => (
     <li>
       <Link to="/bookings">Bookings</Link>
     </li>
+    <li>
+      <Link to="/guests">Guests</Link>
+    </li>
   </ul>
 )
 
