@@ -1,16 +1,27 @@
 package com.codeclan.example.RestaurantManagement.models;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name="bookings")
 public class Booking {
-    private Long id;
-    private int numberPeople;
-    private LocalDateTime dateTime;
-    private String additionalInfo;
-    private Customer customer;
-    private Table table;
 
-    public Booking(int numberPeople, LocalDateTime dateTime, String additionalInfo, Customer customer, Table table) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "numberPeople")
+    private int numberPeople;
+    @Column(name = "dateTime")
+    private LocalDateTime dateTime;
+    @Column(name = "additionalInfo")
+    private String additionalInfo;
+    @Column(name = "customer")
+    private Customer customer;
+    @Column(name = "table")
+    private RestaurantTable table;
+
+    public Booking(int numberPeople, LocalDateTime dateTime, String additionalInfo, Customer customer, RestaurantTable table) {
         this.numberPeople = numberPeople;
         this.dateTime = dateTime;
         this.additionalInfo = additionalInfo;
@@ -60,11 +71,11 @@ public class Booking {
         this.customer = customer;
     }
 
-    public Table getTable() {
+    public RestaurantTable getTable() {
         return table;
     }
 
-    public void setTable(Table table) {
+    public void setTable(RestaurantTable table) {
         this.table = table;
     }
 }

@@ -1,10 +1,21 @@
 package com.codeclan.example.RestaurantManagement.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="customers")
 public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "phoneNumber")
     private int phoneNumber;
+    @Column(name = "noVisits")
     private int noVisits;
+    @Column(name = "additionalInfo")
     private String additionalInfo;
 
     public Customer(String name, int phoneNumber, int noVisits, String additionalInfo) {
