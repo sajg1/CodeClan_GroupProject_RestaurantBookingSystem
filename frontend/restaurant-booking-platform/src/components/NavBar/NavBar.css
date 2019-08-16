@@ -1,0 +1,17 @@
+ul {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2px solid black;
+
+
+
+}
+
+li {
+  padding: 10px;
+}
