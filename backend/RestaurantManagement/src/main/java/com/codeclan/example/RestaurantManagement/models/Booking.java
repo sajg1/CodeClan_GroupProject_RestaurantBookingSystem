@@ -25,14 +25,14 @@ public class Booking {
     @JsonIgnoreProperties("booking")
     @ManyToOne
     @JoinColumn(name = "table_id", nullable = false)
-    private RestaurantTable table;
+    private RestaurantTable restaurantTable;
 
-    public Booking(int numberPeople, LocalDateTime dateTime, String additionalInfo, Customer customer, RestaurantTable table) {
+    public Booking(int numberPeople, LocalDateTime dateTime, String additionalInfo, Customer customer, RestaurantTable restaurantTable) {
         this.numberPeople = numberPeople;
         this.dateTime = dateTime;
         this.additionalInfo = additionalInfo;
         this.customer = customer;
-        this.table = table;
+        this.restaurantTable = restaurantTable;
     }
 
     public Booking() {}
@@ -78,10 +78,10 @@ public class Booking {
     }
 
     public RestaurantTable getTable() {
-        return table;
+        return restaurantTable;
     }
 
     public void setTable(RestaurantTable table) {
-        this.table = table;
+        this.restaurantTable = table;
     }
 }

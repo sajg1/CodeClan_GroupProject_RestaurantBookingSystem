@@ -26,7 +26,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Customer(String name, int phoneNumber, int noVisits, String additionalInfo, List<Booking> bookings) {
+    public Customer(String name, int phoneNumber, int noVisits, String additionalInfo) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.noVisits = noVisits;

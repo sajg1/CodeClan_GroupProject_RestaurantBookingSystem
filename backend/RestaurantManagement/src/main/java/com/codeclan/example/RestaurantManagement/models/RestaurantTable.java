@@ -21,11 +21,11 @@ public class RestaurantTable {
     private int capacity;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "restauranttable", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "restaurantTable", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
 
-    public RestaurantTable(int num, int capacity, Booking bookings) {
+    public RestaurantTable(int num, int capacity) {
         this.num = num;
         this.capacity = capacity;
         this.bookings = new ArrayList<Booking>();
