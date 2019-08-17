@@ -1,8 +1,8 @@
 package com.codeclan.example.RestaurantManagement.controllers;
 
-import com.codeclan.example.RestaurantManagement.models.Booking;
 import com.codeclan.example.RestaurantManagement.models.RestaurantTable;
 import com.codeclan.example.RestaurantManagement.repositories.BookingRepository.BookingRepository;
+import com.codeclan.example.RestaurantManagement.repositories.RestaurantTableRepository.RestaurantTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,17 +14,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookings")
-public class BookingController {
-
+@RequestMapping("/restaurantTables")
+public class RestaurantTableController {
     @Autowired
-    BookingRepository bookingRepository;
+    RestaurantTableRepository restaurantTableRepository;
 
-    @GetMapping(value = "date/{date}")
-    public List<Booking> getBookingsAtDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @PathVariable LocalDateTime date){
-        return bookingRepository.findByDateTime(date);
+
+    @GetMapping(value = "datebetween/{startDate}/{endDate}")
+    public List<RestaurantTable> getBookingsInRange(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @PathVariable LocalDateTime startDate, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @PathVariable LocalDateTime endDate){
+        return restaurantTableRepository.findAllRestaurantTablesForBookingByDateTimeBetween(startDate,endDate);
     }
-
-
-
 }
