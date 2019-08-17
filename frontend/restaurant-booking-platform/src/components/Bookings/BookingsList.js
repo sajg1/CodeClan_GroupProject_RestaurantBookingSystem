@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Booking from './Booking';
 
-const BookingsList = () => {
-  return(
-    <div className="booking-list">
-      <h2>Restaurant Bookings</h2>
-      <p>List of Bookings</p>
-    </div>
-  )
+const BookingsList = (props) => {
+  const bookingNodes = props.data.map((booking, index) => {
+    return <Booking value={index} key={booking.id}>{booking.guestName}</Booking>
+  });
 
+    return (
+      <div className="booking-list">
+        <ul>
+          {bookingNodes}
+        </ul>
+      </div>
+    )
 }
 
 export default BookingsList;
