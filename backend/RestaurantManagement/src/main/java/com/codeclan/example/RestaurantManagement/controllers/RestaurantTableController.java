@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurantTables")
+@RequestMapping("/api/restaurantTables")
 public class RestaurantTableController {
     @Autowired
     RestaurantTableRepository restaurantTableRepository;

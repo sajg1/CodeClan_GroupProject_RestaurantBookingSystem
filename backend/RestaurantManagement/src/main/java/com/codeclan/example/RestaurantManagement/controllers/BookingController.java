@@ -14,17 +14,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookings")
+@RequestMapping("/api/bookings")
 public class BookingController {
 
     @Autowired
     BookingRepository bookingRepository;
 
-    @GetMapping(value = "date/{date}")
-    public List<Booking> getBookingsAtDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @PathVariable LocalDateTime date){
-        return bookingRepository.findByDateTime(date);
+    @GetMapping(value = "datebetween/{startDate}/{endDate}")
+    public List<Booking> getBookingsBetweenTimes(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @PathVariable LocalDateTime startDate,@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @PathVariable LocalDateTime endDate){
+        return bookingRepository.findAllBookingsByDateTimeBetween(startDate,endDate);
     }
 
-
+//findAllBookingsByDateTimeBetween(LocalDateTime startDate, LocalDateTime endDate)
 
 }
