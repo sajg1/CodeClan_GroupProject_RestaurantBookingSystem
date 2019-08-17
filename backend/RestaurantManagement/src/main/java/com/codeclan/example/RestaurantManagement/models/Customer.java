@@ -1,6 +1,10 @@
 package com.codeclan.example.RestaurantManagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="customers")
@@ -18,11 +22,16 @@ public class Customer {
     @Column(name = "additionalInfo")
     private String additionalInfo;
 
-    public Customer(String name, int phoneNumber, int noVisits, String additionalInfo) {
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    private List<Booking> bookings;
+
+    public Customer(String name, int phoneNumber, int noVisits, String additionalInfo, List<Booking> bookings) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.noVisits = noVisits;
         this.additionalInfo = additionalInfo;
+        this.bookings = new ArrayList<Booking>();
     }
 
     public Customer() {}
@@ -65,5 +74,13 @@ public class Customer {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

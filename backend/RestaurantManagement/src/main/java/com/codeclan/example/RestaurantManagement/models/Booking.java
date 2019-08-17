@@ -1,5 +1,7 @@
 package com.codeclan.example.RestaurantManagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -16,9 +18,13 @@ public class Booking {
     private LocalDateTime dateTime;
     @Column(name = "additionalInfo")
     private String additionalInfo;
-    @Column(name = "customer")
+    @JsonIgnoreProperties("booking")
+    @ManyToOne
+    @JoinColumn(name = "customer_id",nullable = false)
     private Customer customer;
-    @Column(name = "table")
+    @JsonIgnoreProperties("booking")
+    @ManyToOne
+    @JoinColumn(name = "table_id", nullable = false)
     private RestaurantTable table;
 
     public Booking(int numberPeople, LocalDateTime dateTime, String additionalInfo, Customer customer, RestaurantTable table) {
