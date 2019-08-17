@@ -14,17 +14,15 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      bookings: []
 
+    }
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
   }
 
   handleBookingSubmit(submittedBooking) {
-    submittedBooking.id = Date.now();
-    const updatedBooking = [...this.state.data, submittedBooking];
-    this.setState({data: updatedBooking});
-
-      bookings: []
-    }
+    const updatedBooking = [...this.state.bookings, submittedBooking];
+    this.setState({bookings: updatedBooking});
   }
 
   componentDidMount() {
@@ -51,10 +49,6 @@ class Main extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={Home} />
-<<<<<<< HEAD
-            <Route exact path="/bookings" render={(props) => { return <BookingsList data={this.state.data} />}} />
-=======
->>>>>>> develop
             <Route path="/guests" component={GuestsList} />
             <Route
               exact path="/bookings"
