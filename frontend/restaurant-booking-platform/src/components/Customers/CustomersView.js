@@ -6,7 +6,7 @@ class CustomersView extends Component {
   constructor(props) {
     super(props);
     this.state: {
-      customers: [Bob],
+      customers: [],
       selectedCustomer: null
     };
     this.handleCustomerSelected = this.handleCustomerSelected.bind(this);
