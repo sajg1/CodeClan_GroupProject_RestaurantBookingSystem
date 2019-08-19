@@ -42,16 +42,6 @@ class BookingsForm extends Component {
     });
   }
 
-  handlePartySizeChange(){
-    this.setState(prevState => {
-      let newSize = prevState.total - this.props.partySize;
-      if(newSize < 0){
-        newSize = 0;
-      }
-      return {partySize: newSize};
-    });
-  }
-
   handleCustomerChange(event) {this.setState({customerName: event.target.value})}
   handlePhoneNumberChange(event) {this.setState({phoneNumber: event.target.value})}
   handlePartySizeChange(event) {this.setState({
@@ -62,7 +52,7 @@ class BookingsForm extends Component {
       <form className="booking-form" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/>
         <input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/>
-        <input type="number" placeholder="Party size" value={this.state.partySize} onChange={this.handlePartySizeChange}/>
+        <input type="number" min="1" max ="10" placeholder="Party size" value={this.state.partySize} onChange={this.handlePartySizeChange}/>
         <input type="submit" value="Enter" />
       </form>
     )
