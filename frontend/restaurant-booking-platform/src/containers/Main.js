@@ -14,7 +14,8 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookings: []
+      bookings: [],
+      customers: []
 
     }
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
@@ -28,11 +29,19 @@ class Main extends Component {
   componentDidMount() {
     const request = new Request()
     const bookingsPromise = request.get('/api/bookings');
+    const customersPromise =  request.get('/api/customers');
     console.log(bookingsPromise);
     const promises = [bookingsPromise];
     Promise.all(promises).then((data) => {
       this.setState({
         bookings: data[0]._embedded.bookings
+      })
+    })
+    console.log(customersPromise);
+    const promises2 = [customersPromise];
+    Promise.all(promises).then((data) => {
+      this.setState({
+        customers: data[0]._embedded.customers
       })
     })
   }
