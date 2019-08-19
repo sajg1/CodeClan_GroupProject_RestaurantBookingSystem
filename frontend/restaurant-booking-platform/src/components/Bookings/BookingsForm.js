@@ -70,7 +70,7 @@ class BookingsForm extends Component {
           <option value="8">8</option>
         </select>
         <textarea name="comment" placeholder="additional notes" rows="1" cols="30"></textarea>
-        <input type="submit" value="Enter" />
+        <input type="submit" value="Add" />
       </form>
     )
   }

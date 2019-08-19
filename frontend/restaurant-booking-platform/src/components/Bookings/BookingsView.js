@@ -22,7 +22,7 @@ class BookingsView extends Component {
   render() {
     return(
       <div>
-      <h2>Bookings</h2>
+      <h2>New booking</h2>
       <BookingsForm onClickSubmit={this.handleBookingSubmit} />
       <BookingsList bookings={this.state.bookings} />
       </div>
