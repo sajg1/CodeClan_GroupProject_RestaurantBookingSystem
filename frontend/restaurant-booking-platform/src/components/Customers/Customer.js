@@ -1,9 +1,10 @@
 import React from 'react';
+import CustomerDetails from './CustomerDetails';
 
 const Customer = (props) => (
 
   <div className="customer">
-    <li>{props.children}</li>
+    <li><a>{props.children}</a></li>
   </div>
 
 )

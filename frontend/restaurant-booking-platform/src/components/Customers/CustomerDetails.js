@@ -4,7 +4,10 @@ class CustomerDetails extends Component {
   render() {
     return (
       <div className="customerDetails">
-        <p>This is a customer detail</p>
+        <h2>{this.props.name}</h2>
+        <p>{this.props.phoneNumber}</p>
+        <p>{this.props.noVisits}</p>
+        <p>{this.props.additionalInfo}</p>
       </div>
     );
   }
