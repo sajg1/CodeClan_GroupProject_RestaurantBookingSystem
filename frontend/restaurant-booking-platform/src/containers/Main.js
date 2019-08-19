@@ -20,6 +20,11 @@ class Main extends Component {
   }
 
   handleBookingSubmit(submittedBooking) {
+
+    console.log("Submitted Booking: ", submittedBooking);
+
+    console.log("Bookings: ", this.state.bookings);
+
     const updatedBooking = [this.state.bookings, submittedBooking];
     this.setState({bookings: updatedBooking});
   }
@@ -55,7 +60,7 @@ class Main extends Component {
           <Switch>
             <Route
               path="/"
-              render={() => <BookingsView bookings={this.state.bookings} />}
+              render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} />}
             />
             <Route path="/customers" render={() => <CustomersView customers={this.state.customers}/>} />
             <Route component={ErrorPage} />

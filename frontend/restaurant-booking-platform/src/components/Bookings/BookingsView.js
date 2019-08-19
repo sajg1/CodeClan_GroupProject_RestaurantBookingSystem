@@ -7,16 +7,16 @@ class BookingsView extends Component {
 
   constructor(props) {
     super(props);
+
+    console.log("All Props: ", props);
     this.state = {
       bookings: []
-
     }
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
   }
 
   handleBookingSubmit(submittedBooking) {
-    const updatedBooking = [this.state.bookings, submittedBooking];
-    this.setState({bookings: updatedBooking});
+    this.props.onBookingSubmit(submittedBooking);
   }
 
   render() {
@@ -24,7 +24,7 @@ class BookingsView extends Component {
       <div>
       <h2>New booking</h2>
       <BookingsForm onClickSubmit={this.handleBookingSubmit} />
-      <BookingsList bookings={this.state.bookings} />
+      <BookingsList bookings={this.props.bookings} />
       </div>
     )
   }
