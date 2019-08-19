@@ -5,7 +5,7 @@ class BookingsList extends Component {
   render() {
     const bookingNodes = this.props.bookings.map(booking => {
       return (
-        <Booking value={booking.value} key={booking.id}>{booking.name}</Booking>
+        <Booking value={booking.value} key={booking.id}>{booking.customer.name}</Booking>
       );
     });
 
