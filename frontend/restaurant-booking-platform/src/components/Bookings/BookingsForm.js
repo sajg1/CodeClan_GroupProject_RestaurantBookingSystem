@@ -5,7 +5,7 @@ class BookingsForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      guestName: '',
+      customerName: '',
       phoneNumber: '',
       // date: this.props.date,
       // time: this.props.time,
@@ -13,7 +13,7 @@ class BookingsForm extends Component {
 
     };
 
-    this.handleGuestChange = this.handleGuestChange.bind(this);
+    this.handleCustomerChange = this.handleCustomerChange.bind(this);
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
     this.handlePartySizeChange = this.handlePartySizeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,18 +22,18 @@ class BookingsForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const guestName = this.state.guestName.trim();
+    const customerName = this.state.customerName.trim();
     const phoneNumber = this.state.phoneNumber.trim();
     // const date = this.state.date.trim();
     // const time = this.state.time.trim();
     const partySize = this.state.partySize.trim();
 
 
-    if (!guestName || !phoneNumber || !partySize){
+    if (!customerName || !phoneNumber || !partySize){
       return
     }
     this.props.onClickSubmit({
-      guestName: guestName,
+      customerName: customerName,
       phoneNumber: phoneNumber,
       // date: date,
       // time: time,
@@ -52,7 +52,7 @@ class BookingsForm extends Component {
     });
   }
 
-  handleGuestChange(event) {this.setState({guestName: event.target.value})}
+  handleCustomerChange(event) {this.setState({customerName: event.target.value})}
   handlePhoneNumberChange(event) {this.setState({phoneNumber: event.target.value})}
   handlePartySizeChange(event) {this.setState({
     partySize: event.target.value})}
@@ -60,7 +60,7 @@ class BookingsForm extends Component {
   render(){
     return(
       <form className="booking-form" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Guest name" value={this.state.guestName} onChange={this.handleGuestChange}/>
+        <input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/>
         <input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/>
         <input type="number" placeholder="Party size" value={this.state.partySize} onChange={this.handlePartySizeChange}/>
         <input type="submit" value="Enter" />

@@ -11,7 +11,7 @@ const NavBar = () => (
       <Link to="/bookings" style={{textDecoration : 'none'}}>Bookings</Link>
     </li>
     <li>
-      <Link to="/guests" style={{textDecoration : 'none'}}>Guests</Link>
+      <Link to="/customers" style={{textDecoration : 'none'}}>Customers</Link>
     </li>
   </ul>
 )

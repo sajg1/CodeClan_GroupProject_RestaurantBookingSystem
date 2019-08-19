@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import BookingsForm from '../components/Bookings/BookingsForm';
 import BookingsList from '../components/Bookings/BookingsList';
-import GuestsList from '../components/Guests/GuestsList';
+import CustomersList from '../components/Customers/CustomersList';
 import Home from '../components/Home';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -49,7 +49,7 @@ class Main extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/guests" component={GuestsList} />
+            <Route path="/customers" component={CustomersList} />
             <Route
               exact path="/bookings"
               render={(props) => {
