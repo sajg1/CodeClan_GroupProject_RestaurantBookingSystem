@@ -47,7 +47,10 @@ class Main extends Component {
           </div>
           <Switch>
             <Route path="/customers" component={CustomersList} />
-            <Route path="/" component={BookingsView} />
+            <Route
+              path="/"
+              render={() => <BookingsView bookings={this.state.bookings} />}
+            />
             <Route component={ErrorPage} />
           </Switch>
         </React.Fragment>
