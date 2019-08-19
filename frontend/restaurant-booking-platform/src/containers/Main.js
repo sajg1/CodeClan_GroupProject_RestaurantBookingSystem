@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import BookingsForm from '../components/Bookings/BookingsForm';
-import BookingsList from '../components/Bookings/BookingsList';
 import BookingsView from '../components/Bookings/BookingsView';
-import CustomersList from '../components/Customers/CustomersList';
+import CustomersView from '../components/Customers/CustomersList';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar.js';
@@ -39,7 +37,7 @@ class Main extends Component {
     })
     console.log(customersPromise);
     const promises2 = [customersPromise];
-    Promise.all(promises).then((data) => {
+    Promise.all(promises2).then((data) => {
       this.setState({
         customers: data[0]._embedded.customers
       })
@@ -55,13 +53,12 @@ class Main extends Component {
             <h1>Restaurant Booking System</h1>
           </div>
           <Switch>
-            <Route path="/customers" component={CustomersList} />
-            <Route path="/" component={BookingsView} />
+            <Route exact path="/" component={BookingsView} />
+            <Route path="/customers" render={() => <CustomersView customers={this.state.customers}/>} />
             <Route component={ErrorPage} />
           </Switch>
         </React.Fragment>
       </Router>
-
     )
   }
 }
