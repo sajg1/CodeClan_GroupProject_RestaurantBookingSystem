@@ -14,14 +14,13 @@ class Main extends Component {
     this.state = {
       bookings: [],
       customers: []
-
     }
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
   }
 
   handleBookingSubmit(submittedBooking) {
 
-    console.log("Submitted Booking: ", submittedBooking);
+    console.log("Submitted Booking TOP: ", submittedBooking);
 
     console.log("Bookings: ", this.state.bookings);
 
