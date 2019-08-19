@@ -56,7 +56,7 @@ class BookingsForm extends Component {
       <form className="booking-form" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/>
         <input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/>
-
+        <input type="date"/>
         <input type="number" min="1" max ="10" placeholder="Party size" value={this.state.partySize} onChange={this.handlePartySizeChange}/>
         <select name="table" value={this.state.tableNumber} onChange={this.handleTableNumberChange}>
           <option value="" disabled selected>table</option>
