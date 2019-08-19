@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import BookingsForm from './BookingsForm';
 import BookingsList from './BookingsList';
+import BookingsDetails from './BookingDetails';
 
 class BookingsView extends Component {
 
