@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import BookingsForm from '../components/Bookings/BookingsForm';
 import BookingsList from '../components/Bookings/BookingsList';
+import BookingsView from '../components/Bookings/BookingsView';
 import CustomersList from '../components/Customers/CustomersList';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -43,17 +44,10 @@ class Main extends Component {
           <NavBar />
           <div className="main">
             <h1>Restaurant Booking System</h1>
-            <h2>Bookings</h2>
-            <BookingsForm onClickSubmit={this.handleBookingSubmit} />
           </div>
           <Switch>
             <Route path="/customers" component={CustomersList} />
-            <Route
-              exact path="/"
-              render={(props) => {
-                return <BookingsList bookings={this.state.bookings} />
-              }}
-            />
+            <Route path="/" component={BookingsView} />
             <Route component={ErrorPage} />
           </Switch>
         </React.Fragment>
