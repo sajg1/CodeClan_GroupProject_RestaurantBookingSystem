@@ -1,6 +1,7 @@
 package com.codeclan.example.RestaurantManagement.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class Customer {
     @Column(name = "additionalInfo")
     private String additionalInfo;
 
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @JsonIgnore
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Booking> bookings;
