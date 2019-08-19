@@ -4,7 +4,7 @@ import CustomerDetails from './CustomerDetails';
 const Customer = (props) => (
 
   <div className="customer">
-    <li><a>{props.children}</a></li>
+    <li>{props.children}</li>
   </div>
 
 )
