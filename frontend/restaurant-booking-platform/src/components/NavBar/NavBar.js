@@ -5,10 +5,7 @@ import './NavBar.css';
 const NavBar = () => (
   <ul>
     <li>
-      <Link to="/" style={{textDecoration : 'none'}}>Home</Link>
-    </li>
-    <li>
-      <Link to="/bookings" style={{textDecoration : 'none'}}>Bookings</Link>
+      <Link to="/" style={{textDecoration : 'none'}}>Bookings</Link>
     </li>
     <li>
       <Link to="/customers" style={{textDecoration : 'none'}}>Customers</Link>

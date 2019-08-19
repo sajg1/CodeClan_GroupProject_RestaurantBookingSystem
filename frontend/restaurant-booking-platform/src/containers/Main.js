@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import BookingsForm from '../components/Bookings/BookingsForm';
 import BookingsList from '../components/Bookings/BookingsList';
 import CustomersList from '../components/Customers/CustomersList';
-import Home from '../components/Home';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar.js';
@@ -21,7 +20,7 @@ class Main extends Component {
   }
 
   handleBookingSubmit(submittedBooking) {
-    const updatedBooking = [...this.state.bookings, submittedBooking];
+    const updatedBooking = [this.state.bookings, submittedBooking];
     this.setState({bookings: updatedBooking});
   }
 
@@ -48,10 +47,9 @@ class Main extends Component {
             <BookingsForm onClickSubmit={this.handleBookingSubmit} />
           </div>
           <Switch>
-            <Route exact path="/" component={Home} />
             <Route path="/customers" component={CustomersList} />
             <Route
-              exact path="/bookings"
+              exact path="/"
               render={(props) => {
                 return <BookingsList bookings={this.state.bookings} />
               }}
