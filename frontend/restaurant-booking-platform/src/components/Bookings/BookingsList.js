@@ -7,14 +7,18 @@ class BookingsList extends Component {
    const bookingNodes = this.props.bookings.map(booking => {
 
      return (
+       <span>
        <Booking value={booking.value} key={booking.id} className="table" booking={booking}>
        </Booking>
+       <button>Delete</button>
+       </span>
      );
    });
    return (
      <div className="bookingList">
        <h2>Restaurant Bookings</h2>
        <table>
+        <tbody>
          <tr>
            <th>Name</th>
            <th>Phone</th>
@@ -23,6 +27,7 @@ class BookingsList extends Component {
            <th>able number</th>
          </tr>
          {bookingNodes}
+         </tbody>
        </table>
      </div>
    )

@@ -21,7 +21,7 @@ class CustomersView extends Component {
   render() {
 
     return(
-      <div>
+      <div className="main">
         <CustomersList
           customers={this.props.customers}
           onCustomerSelected={this.handleCustomerSelected} />

@@ -1,4 +1,6 @@
 import React from 'react';
+import '../Bookings/Bookings.css';
+
 
 const CustomersList = (props) => {
 
@@ -11,7 +13,7 @@ const CustomersList = (props) => {
   }
 
   return(
-    <div className="customers-list">
+    <div className="bookingList">
       <h2>Restaurant Customers</h2>
       <select id="customer-selector" defaultValue="default" onChange={handleChange}>
         <option disabled value="default">Choose a Customer...</option>
