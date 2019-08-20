@@ -7,6 +7,7 @@ class BookingsForm extends Component {
     this.state = {
       customerName: '',
       phoneNumber: '',
+      additionalCustomerInfo: '',
       dateTime: '',
       partySize: '',
       tableNumber: '',
@@ -18,13 +19,17 @@ class BookingsForm extends Component {
     this.handleDateTimeChange = this.handleDateTimeChange.bind(this);
     this.handlePartySizeChange = this.handlePartySizeChange.bind(this);
     this.handleTableNumberChange = this.handleTableNumberChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleAdditionalInfoChange = this.handleAdditionalInfoChange.bind(this);
+    this.handleAdditionalCustomerInfoChange = this.handleAdditionalCustomerInfoChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event){
     event.preventDefault();
     const customerName = this.state.customerName.trim();
     const phoneNumber = this.state.phoneNumber.trim();
+    const additionalCustomerInfo = this.state.additionalCustomerInfo.trim();
+    const additionalInfo = this.state.additionalInfo.trim();
     const dateTime = this.state.dateTime.trim();
     const partySize = this.state.partySize.trim();
     const tableNumber = this.state.tableNumber.trim();
@@ -34,7 +39,20 @@ class BookingsForm extends Component {
     }
 
     this.props.onClickSubmit({
-      customer: {
+
+       customer: {
+        name: customerName,
+        phoneNumber: phoneNumber,
+        noVisits: 0,
+        additionalInfo: additionalInfo
+      },
+      dateTime: dateTime,
+      partySize: partySize,
+      restaurantTable: "http://localhost:8080/api/tables/" + tableNumber
+
+    });
+    this.props.handleBookingPost({
+       customer: {
         customerName: customerName,
         phoneNumber: phoneNumber,
         noVisits: 0,
@@ -51,6 +69,8 @@ class BookingsForm extends Component {
   handleDateTimeChange(event) {this.setState({dateTime: event.target.value})}
   handlePartySizeChange(event) {this.setState({partySize: event.target.value})}
   handleTableNumberChange(event) {this.setState({tableNumber: event.target.value})}
+  handleAdditionalCustomerInfoChange(event) {this.setState({additionalCustomerInfo: event.target.value})}
+  handleAdditionalInfoChange(event) {this.setState({additionalInfo: event.target.value})}
 
   render(){
     return(
@@ -59,7 +79,10 @@ class BookingsForm extends Component {
 
         <input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/>
 
+        <textarea name="comment" placeholder="customer info" rows="1" cols="30" value={this.state.additionalCustomerInfo} onChange={this.handleAdditionalCustomerInfoChange}></textarea>
+
         <input type="datetime-local" value={this.state.dateTime} onChange={this.handleDateTimeChange}/>
+
 
         <label>Party Size</label>
         <input type="number" min="1" max="10" placeholder="Party size" value={this.state.partySize} onChange={this.handlePartySizeChange}/>
@@ -76,7 +99,7 @@ class BookingsForm extends Component {
           <option value="7">7</option>
           <option value="8">8</option>
         </select>
-        <textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.additionalInfo}></textarea>
+        <textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea>
         <input type="submit" value="Add" />
       </form>
     )
