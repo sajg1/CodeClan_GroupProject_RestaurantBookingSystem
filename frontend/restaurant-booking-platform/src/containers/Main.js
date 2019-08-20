@@ -40,17 +40,22 @@ class Main extends Component {
 
     if (isNew){
       this.handleCustomerPost(customer)
-      .then(
-        res => (res.json())
-      ).then( newCustomer => {
+      .then( newCustomer => {
           const newCustomerId = newCustomer["id"]
           newBooking.customer="http://localhost:8080/api/customers/"+newCustomerId
           console.log("newBooking after adding customerId",newBooking)
 
           this.handleBookingPost(newBooking)
+          .then(this.fetchBookings())
         })
     }
-      
+
+  }
+
+  fetchBookings() {
+    const request = new Request();
+    const bookingsPromise = request.get('/api/bookings')
+    .then(updatedBookings => this.state.bookings = updatedBookings)
   }
 
   componentDidMount() {
@@ -84,7 +89,6 @@ class Main extends Component {
               exact path="/"
               render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} />}
             />
-
             <Route path="/customers" render={() => <CustomersView customers={this.state.customers}/>} />
 
             <Route component={ErrorPage} />
