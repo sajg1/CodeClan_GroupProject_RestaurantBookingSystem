@@ -24,7 +24,7 @@ public class Booking {
     private Customer customer;
     @JsonIgnoreProperties("booking")
     @ManyToOne
-    @JoinColumn(name = "table_id", nullable = false)
+    @JoinColumn(name = "restaurantTable_id", nullable = false)
     private RestaurantTable restaurantTable;
 
     public Booking(int numberPeople, LocalDateTime dateTime, String additionalInfo, Customer customer, RestaurantTable restaurantTable) {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import BookingsView from '../components/Bookings/BookingsView';
-import CustomersView from '../components/Customers/CustomersList';
+import CustomersView from '../components/Customers/CustomersView';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar.js';
@@ -16,34 +16,57 @@ class Main extends Component {
       customers: []
     }
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
+    this.handleBookingPost = this.handleBookingPost.bind(this);
   }
 
-  handleBookingSubmit(submittedBooking) {
+  handleCustomerPost(customer) {
+    const request = new Request();
+    console.log("new customer=",customer)
+    const result = request.post('/api/customers', customer);
+    console.log("customer result=",result)
+    return result
+  }
 
-    console.log("Submitted Booking TOP: ", submittedBooking);
+  handleBookingPost(booking) {
+    const request = new Request();
+    console.log("new booking=",booking)
+    const result =request.post('/api/bookings', booking)
+    console.log("booking result=",result)
+    return result
+  }
 
-    console.log("Bookings: ", this.state.bookings);
 
-    const updatedBooking = [this.state.bookings, submittedBooking];
-    this.setState({bookings: updatedBooking});
+  handleBookingSubmit(customer,newBooking,isNew) {
+
+    if (isNew){
+      this.handleCustomerPost(customer)
+      .then(
+        res => (res.json())
+      ).then( newCustomer => {
+          const newCustomerId = newCustomer["id"]
+          newBooking.customer="http://localhost:8080/api/customers/"+newCustomerId
+          console.log("newBooking after adding customerId",newBooking)
+
+          this.handleBookingPost(newBooking)
+        })
+    }
+      
   }
 
   componentDidMount() {
-    const request = new Request()
+    const request = new Request();
     const bookingsPromise = request.get('/api/bookings');
     const customersPromise =  request.get('/api/customers');
+
     console.log(bookingsPromise);
-    const promises = [bookingsPromise];
+    console.log(customersPromise);
+
+    const promises = [bookingsPromise, customersPromise];
+
     Promise.all(promises).then((data) => {
       this.setState({
-        bookings: data[0]._embedded.bookings
-      })
-    })
-    console.log(customersPromise);
-    const promises2 = [customersPromise];
-    Promise.all(promises2).then((data) => {
-      this.setState({
-        customers: data[0]._embedded.customers
+        bookings: data[0]._embedded.bookings,
+        customers: data[1]._embedded.customers
       })
     })
   }
@@ -58,10 +81,12 @@ class Main extends Component {
           </div>
           <Switch>
             <Route
-              path="/"
+              exact path="/"
               render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} />}
             />
+
             <Route path="/customers" render={() => <CustomersView customers={this.state.customers}/>} />
+
             <Route component={ErrorPage} />
           </Switch>
         </React.Fragment>
