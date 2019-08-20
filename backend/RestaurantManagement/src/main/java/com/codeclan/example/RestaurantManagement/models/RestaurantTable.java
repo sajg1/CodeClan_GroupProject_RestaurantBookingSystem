@@ -16,8 +16,8 @@ public class RestaurantTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="num")
-    private int num;
+    @Column(name="number")
+    private int number;
     @Column(name="capacity")
     private int capacity;
 
@@ -27,8 +27,8 @@ public class RestaurantTable {
     private List<Booking> bookings;
 
 
-    public RestaurantTable(int num, int capacity) {
-        this.num = num;
+    public RestaurantTable(int number, int capacity) {
+        this.number = number;
         this.capacity = capacity;
         this.bookings = new ArrayList<Booking>();
     }
@@ -43,12 +43,12 @@ public class RestaurantTable {
         this.id = id;
     }
 
-    public int getNum() {
-        return num;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public int getCapacity() {
