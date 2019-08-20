@@ -7,23 +7,27 @@ class CustomersView extends Component {
     super(props);
     this.state = {
       customers: [],
-      selectedCustomer: null
+      currentCustomer: null
     };
     this.handleCustomerSelected = this.handleCustomerSelected.bind(this);
   }
 
   handleCustomerSelected(index) {
-    const selectedCustomer = this.state.customers[index];
-    this.setState( {selectedCustomer: selectedCustomer})
+    const selectedCustomer = this.props.customers[index];
+    this.setState( {currentCustomer: selectedCustomer});
+
   }
 
-  render(){
+  render() {
+
+    console.log("Current Customer: ", this.state.currentCustomer);
+
     return(
       <div>
         <CustomersList
           customers={this.props.customers}
           onCustomerSelected={this.handleCustomerSelected} />
-        <CustomerDetails customer={this.state.selectedCustomer}/>
+        <CustomerDetails customer={this.state.currentCustomer}/>
         </div>
     )
   }

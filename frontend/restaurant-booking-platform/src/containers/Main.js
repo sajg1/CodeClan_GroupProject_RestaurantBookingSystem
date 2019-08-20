@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import BookingsView from '../components/Bookings/BookingsView';
-import CustomersView from '../components/Customers/CustomersList';
+import CustomersView from '../components/Customers/CustomersView';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar.js';
