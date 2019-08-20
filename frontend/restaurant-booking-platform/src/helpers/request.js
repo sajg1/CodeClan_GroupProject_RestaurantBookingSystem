@@ -18,7 +18,6 @@ class Request {
       method: "DELETE",
       headers: {'Content-Type': 'application/json'}
     })
-    .then((res) => res.json())
   }
 }
 

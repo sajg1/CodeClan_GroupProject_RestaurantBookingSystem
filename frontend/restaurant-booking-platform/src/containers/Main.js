@@ -40,8 +40,17 @@ class Main extends Component {
 
   handleBookingDelete(id){
     const request = new Request();
-    const url = '/api/bookings/' + id;
+    const url = '/api/bookings/'+id;
+    console.log("This is the id: ", id)
     request.delete(url);
+
+    const updatedBookings = this.state.bookings.map((booking, index) => {
+      if (booking.id == id) {
+        this.state.bookings.splice(index, 1);
+      }
+    })
+    this.setState({bookings: this.state.bookings})
+    console.log(this.state.bookings);
   }
 
 

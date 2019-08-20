@@ -5,13 +5,13 @@ import './Bookings.css';
 class BookingsList extends Component {
  render() {
    const bookingNodes = this.props.bookings.map(booking => {
-
+     console.log("This is the booking ID: ",booking.id)
      return (
        <tr className="booking" key={booking.id}>
-         <Booking value={booking.value} key={booking.id} className="table" booking={booking}>
+         <Booking value={booking.value} className="table" booking={booking}>
          </Booking>
          <td>
-        <button onClick={this.props.onDelete} value={booking.id}>DELETE</button>
+        <button onClick={() => this.props.onDelete(booking.id)} value={booking.id}>DELETE</button>
         </td>
        </tr>
      );
