@@ -18,6 +18,8 @@ class Main extends Component {
     }
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
     this.handleBookingPost = this.handleBookingPost.bind(this);
+    this.handleBookingDelete = this.handleBookingDelete.bind(this);
+
   }
 
   handleCustomerPost(customer) {
@@ -34,6 +36,12 @@ class Main extends Component {
     const result =request.post('/api/bookings', booking)
     console.log("booking result=",result)
     return result
+  }
+
+  handleBookingDelete(id){
+    const request = new Request();
+    const url = '/api/bookings/' + id;
+    request.delete(url);
   }
 
 
@@ -99,7 +107,7 @@ class Main extends Component {
           <Switch>
             <Route
               exact path="/"
-              render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} />}
+              render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} onDelete={this.handleBookingDelete} />}
             />
             <Route path="/customers" render={() => <CustomersView customers={this.state.customers}/>} />
 
