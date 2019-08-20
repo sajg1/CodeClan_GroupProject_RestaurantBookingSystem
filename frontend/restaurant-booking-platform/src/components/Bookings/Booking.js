@@ -1,4 +1,5 @@
 import React from "react";
+import './Bookings.css';
 
 const Booking = (props) => (
     <div className="booking">

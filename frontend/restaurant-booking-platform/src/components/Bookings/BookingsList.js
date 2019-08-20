@@ -5,12 +5,12 @@ class BookingsList extends Component {
   render() {
     const bookingNodes = this.props.bookings.map(booking => {
       return (
-        <Booking value={booking.value} key={booking.id}>
+        <div className="bookingList"><Booking value={booking.value} key={booking.id}>
         When: {booking.dateTime},
         Who: {booking.customer.name},
         How Many: {booking.numberPeople},
         What Table: {booking.restaurantTable.num}
-        </Booking>
+        </Booking></div>
       );
     });
 

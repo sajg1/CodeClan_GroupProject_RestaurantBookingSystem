@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import BookingsForm from './BookingsForm';
 import BookingsList from './BookingsList';
 import BookingsDetails from './BookingDetails';
+import './Bookings.css';
 
 class BookingsView extends Component {
 
@@ -20,7 +21,7 @@ class BookingsView extends Component {
 
   render() {
     return(
-      <div>
+      <div className="main">
       <h2 style={{color: 'red'}}>New booking</h2>
       <BookingsForm onClickSubmit={this.handleBookingSubmit} />
       <BookingsList bookings={this.props.bookings} />
