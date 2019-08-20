@@ -5,6 +5,7 @@ import logo1 from '../../style/bb.png'
 import logo2 from '../../style/cb.png'
 
 const NavBar = () => (
+  <nav>
   <ul>
     <li>
       <a href="/">
@@ -17,6 +18,7 @@ const NavBar = () => (
       </a>
     </li>
   </ul>
+  </nav>
 )
 
 export default NavBar;
