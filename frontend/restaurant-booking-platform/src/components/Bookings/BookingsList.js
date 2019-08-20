@@ -1,25 +1,29 @@
 import React, {Component} from 'react';
 import Booking from './Booking';
+import './Bookings.css';
+
 class BookingsList extends Component {
  render() {
    const bookingNodes = this.props.bookings.map(booking => {
-     let date = new Date(booking.dateTime);
-     var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: ('numeric', '2-digit'), minute: ('numeric', '2-digit') };
+
      return (
-       <Booking value={booking.value} key={booking.id}>
-       {date.toLocaleString('en-GB', options)},
-       {booking.customer.name},
-       {booking.numberPeople},
-       {booking.restaurantTable.number}
+       <Booking value={booking.value} key={booking.id} className="table" booking={booking}>
        </Booking>
      );
    });
    return (
-     <div className="booking-list">
+     <div className="bookingList">
        <h2>Restaurant Bookings</h2>
-           <div>
-             {bookingNodes}
-           </div>
+       <table>
+         <tr>
+           <th>Name</th>
+           <th>Phone</th>
+           <th>Date & Time</th>
+           <th>Pax</th>
+           <th>able number</th>
+         </tr>
+         {bookingNodes}
+       </table>
      </div>
    )
 }
