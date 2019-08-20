@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomersList from './CustomersList';
 import CustomerDetails from './CustomerDetails';
+import './Customer.css';
 
 class CustomersView extends Component {
   constructor(props) {
@@ -15,17 +16,18 @@ class CustomersView extends Component {
   handleCustomerSelected(index) {
     const selectedCustomer = this.props.customers[index];
     this.setState( {currentCustomer: selectedCustomer});
+    console.log("Current Customer: ", this.state.currentCustomer)
 
   }
 
   render() {
 
     return(
-      <div>
+      <div className="customer-view">
         <CustomersList
           customers={this.props.customers}
           onCustomerSelected={this.handleCustomerSelected} />
-        <CustomerDetails customer={this.state.currentCustomer}/>
+        <CustomerDetails customer={this.state.currentCustomer} onDelete={this.props.onDelete}/>
         </div>
     )
   }
