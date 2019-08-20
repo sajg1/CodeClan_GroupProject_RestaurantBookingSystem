@@ -5,13 +5,13 @@ class BookingsForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      customerName: '',
-      phoneNumber: '',
-      additionalCustomerInfo: '',
+      customerName: 'Name',
+      phoneNumber: '44',
+      additionalCustomerInfo: 'Gluten Tolerant',
       dateTime: '',
-      numberPeople: '',
-      tableNumber: '',
-      additionalInfo: ''
+      numberPeople: '2',
+      tableNumber: '1',
+      additionalInfo: 'Birthday Party'
     };
 
     this.handleCustomerChange = this.handleCustomerChange.bind(this);
@@ -93,7 +93,7 @@ class BookingsForm extends Component {
           <option value="7">7</option>
           <option value="8">8</option>
         </select>
-        <textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea>
+        <textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.state.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea>
         <input type="submit" value="Add"/>
       </form>
     )

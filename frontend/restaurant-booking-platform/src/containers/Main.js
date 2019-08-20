@@ -36,9 +36,9 @@ class Main extends Component {
   }
 
 
-  handleBookingSubmit(customer,newBooking,isNew) {
+  handleBookingSubmit(customer,newBooking,isNewCustomer) {
 
-    if (isNew){
+    if (isNewCustomer){
       this.handleCustomerPost(customer)
       .then( newCustomer => {
           const newCustomerId = newCustomer["id"]
@@ -46,7 +46,13 @@ class Main extends Component {
           console.log("newBooking after adding customerId",newBooking)
 
           this.handleBookingPost(newBooking)
-          .then(this.fetchBookings())
+          .then(() => {
+            this.fetchBookings()
+            newBooking.customer = newCustomer
+            let now = new Date();
+            newBooking.key = now.getTime();
+            this.setState({bookings: [...this.state.bookings, newBooking]})
+          })
         })
     }
 
