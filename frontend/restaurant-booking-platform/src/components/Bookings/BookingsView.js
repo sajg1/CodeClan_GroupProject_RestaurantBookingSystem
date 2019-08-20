@@ -3,6 +3,8 @@ import BookingsForm from './BookingsForm';
 import BookingsList from './BookingsList';
 import BookingsDetails from './BookingDetails';
 import Request from '../../helpers/request';
+import './Bookings.css';
+
 
 class BookingsView extends Component {
 
@@ -11,10 +13,9 @@ class BookingsView extends Component {
 
   }
 
-
   render() {
     return(
-      <div>
+      <div className="main">
       <h2>New booking</h2>
       <BookingsForm onClickSubmit={this.props.onBookingSubmit}/>
       <BookingsList bookings={this.props.bookings} />
