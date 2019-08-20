@@ -9,7 +9,7 @@ class BookingsForm extends Component {
       phoneNumber: '',
       additionalCustomerInfo: '',
       dateTime: '',
-      partySize: '',
+      numberPeople: '',
       tableNumber: '',
       additionalInfo: ''
     };
@@ -17,57 +17,51 @@ class BookingsForm extends Component {
     this.handleCustomerChange = this.handleCustomerChange.bind(this);
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
     this.handleDateTimeChange = this.handleDateTimeChange.bind(this);
-    this.handlePartySizeChange = this.handlePartySizeChange.bind(this);
+    this.handlenumberPeopleChange = this.handlenumberPeopleChange.bind(this);
     this.handleTableNumberChange = this.handleTableNumberChange.bind(this);
     this.handleAdditionalInfoChange = this.handleAdditionalInfoChange.bind(this);
     this.handleAdditionalCustomerInfoChange = this.handleAdditionalCustomerInfoChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(event){
     event.preventDefault();
+    console.log("this=",this)
+    console.log("this.state=",this.state)
     const customerName = this.state.customerName.trim();
     const phoneNumber = this.state.phoneNumber.trim();
     const additionalCustomerInfo = this.state.additionalCustomerInfo.trim();
     const additionalInfo = this.state.additionalInfo.trim();
     const dateTime = this.state.dateTime.trim();
-    const partySize = this.state.partySize.trim();
+    const numberPeople = this.state.numberPeople.trim();
     const tableNumber = this.state.tableNumber.trim();
 
-    if (!customerName || !phoneNumber || !partySize || !tableNumber){
+    if (!customerName || !phoneNumber || !numberPeople || !tableNumber){
       return
     }
+    const newCustomer = {
+     name: customerName,
+     phoneNumber: phoneNumber,
+     noVisits: 0,
+     additionalInfo: additionalCustomerInfo
+    }
 
-    this.props.onClickSubmit({
-
-       customer: {
-        name: customerName,
-        phoneNumber: phoneNumber,
-        noVisits: 0,
+    const newBooking = {
+        customer: "http://localhost:8080/api/customer/" + 1,
+        dateTime: dateTime,
+        numberPeople: numberPeople,
+        restaurantTable: "http://localhost:8080/api/restaurantTables/" + tableNumber,
         additionalInfo: additionalInfo
-      },
-      dateTime: dateTime,
-      partySize: partySize,
-      restaurantTable: "http://localhost:8080/api/tables/" + tableNumber
+      }
 
-    });
-    this.props.handleBookingPost({
-       customer: {
-        customerName: customerName,
-        phoneNumber: phoneNumber,
-        noVisits: 0,
-      },
-      dateTime: dateTime,
-      partySize: partySize,
-      tableNumber: tableNumber,
-
-    });
+      {/*add logic for is new or not*/}
+    this.props.onClickSubmit(newCustomer, newBooking,true);
   }
 
   handleCustomerChange(event) {this.setState({customerName: event.target.value})}
   handlePhoneNumberChange(event) {this.setState({phoneNumber: event.target.value})}
   handleDateTimeChange(event) {this.setState({dateTime: event.target.value})}
-  handlePartySizeChange(event) {this.setState({partySize: event.target.value})}
+  handlenumberPeopleChange(event) {this.setState({numberPeople: event.target.value})}
   handleTableNumberChange(event) {this.setState({tableNumber: event.target.value})}
   handleAdditionalCustomerInfoChange(event) {this.setState({additionalCustomerInfo: event.target.value})}
   handleAdditionalInfoChange(event) {this.setState({additionalInfo: event.target.value})}
@@ -85,7 +79,7 @@ class BookingsForm extends Component {
 
 
         <label>Party Size</label>
-        <input type="number" min="1" max="10" placeholder="Party size" value={this.state.partySize} onChange={this.handlePartySizeChange}/>
+        <input type="number" min="1" max="10"  value={this.state.numberPeople} onChange={this.handlenumberPeopleChange}/>
 
         <label>Table Number</label>
         <select name="table" value={this.state.tableNumber} onChange={this.handleTableNumberChange}>
@@ -100,7 +94,7 @@ class BookingsForm extends Component {
           <option value="8">8</option>
         </select>
         <textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea>
-        <input type="submit" value="Add" />
+        <input type="submit" value="Add"/>
       </form>
     )
   }
