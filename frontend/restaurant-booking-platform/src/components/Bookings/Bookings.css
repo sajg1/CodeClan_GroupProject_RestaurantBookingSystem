@@ -15,3 +15,14 @@
 
 .bookingList:hover {background-color:#f5f5f5;
 }
+
+.bookingsForm {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}

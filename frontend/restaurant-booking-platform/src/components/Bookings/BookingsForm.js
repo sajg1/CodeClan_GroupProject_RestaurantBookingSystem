@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Bookings.css';
 
 class BookingsForm extends Component {
 
@@ -54,7 +55,7 @@ class BookingsForm extends Component {
 
   render(){
     return(
-      <form className="booking-form" onSubmit={this.handleSubmit}>
+      <form className="bookingForm" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/>
 
         <input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/>
