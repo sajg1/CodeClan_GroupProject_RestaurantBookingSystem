@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import BookingsView from '../components/Bookings/BookingsView';
-import CustomersView from '../components/Customers/CustomersList';
+import CustomersView from '../components/Customers/CustomersView';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar/NavBar.js';
@@ -32,18 +32,16 @@ class Main extends Component {
     const request = new Request()
     const bookingsPromise = request.get('/api/bookings');
     const customersPromise =  request.get('/api/customers');
+
     console.log(bookingsPromise);
-    const promises = [bookingsPromise];
+    console.log(customersPromise);
+
+    const promises = [bookingsPromise, customersPromise];
+
     Promise.all(promises).then((data) => {
       this.setState({
-        bookings: data[0]._embedded.bookings
-      })
-    })
-    console.log(customersPromise);
-    const promises2 = [customersPromise];
-    Promise.all(promises2).then((data) => {
-      this.setState({
-        customers: data[0]._embedded.customers
+        bookings: data[0]._embedded.bookings,
+        customers: data[1]._embedded.customers
       })
     })
   }
@@ -58,10 +56,12 @@ class Main extends Component {
           </div>
           <Switch>
             <Route
-              path="/"
+              exact path="/"
               render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} />}
             />
+
             <Route path="/customers" render={() => <CustomersView customers={this.state.customers}/>} />
+
             <Route component={ErrorPage} />
           </Switch>
         </React.Fragment>

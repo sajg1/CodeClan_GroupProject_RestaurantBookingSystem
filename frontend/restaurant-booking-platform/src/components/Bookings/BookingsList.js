@@ -9,7 +9,7 @@ class BookingsList extends Component {
       let date = new Date(booking.dateTime);
 
       var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: ('numeric', '2-digit'), minute: ('numeric', '2-digit') };
-   
+
       return (
         <Booking value={booking.value} key={booking.id}>
         {date.toLocaleString('en-GB', options)},
