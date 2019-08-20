@@ -33,3 +33,8 @@ input, textarea {
   height: 25px;
   /* padding: 12px 20px; */
 }
+
+.table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
