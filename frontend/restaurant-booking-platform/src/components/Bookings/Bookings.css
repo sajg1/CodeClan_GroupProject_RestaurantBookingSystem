@@ -4,7 +4,7 @@
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
-.bookingList {
+.booking {
   border-collapse: collapse;
   width: 100%;
   padding: 8px;
@@ -13,7 +13,7 @@
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
-.bookingList:hover {background-color:#f5f5f5;
+.booking:hover {background-color:#f5f5f5;
 }
 
 .bookingsForm {
@@ -25,4 +25,11 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
+}
+
+input, textarea {
+  border: 2px solid #555;
+  border-radius: 4px;
+  height: 25px;
+  /* padding: 12px 20px; */
 }

@@ -15,7 +15,7 @@ class BookingsList extends Component {
      );
    });
    return (
-     <div className="booking-list">
+     <div className="bookingList">
        <h2>Restaurant Bookings</h2>
            <div>
              {bookingNodes}
