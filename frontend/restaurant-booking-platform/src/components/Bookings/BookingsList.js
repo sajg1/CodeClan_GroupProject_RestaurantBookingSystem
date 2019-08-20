@@ -10,7 +10,7 @@ class BookingsList extends Component {
        {date.toLocaleString('en-GB', options)},
        {booking.customer.name},
        {booking.numberPeople},
-       {booking.restaurantTable.num}
+       {booking.restaurantTable.number}
        </Booking>
      );
    });

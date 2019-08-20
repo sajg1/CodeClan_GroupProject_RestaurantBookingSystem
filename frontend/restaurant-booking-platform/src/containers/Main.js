@@ -46,13 +46,19 @@ class Main extends Component {
           newBooking.customer="http://localhost:8080/api/customers/"+newCustomerId
           console.log("newBooking after adding customerId",newBooking)
 
+          const tableNumber = newBooking.restaurantTable
+          newBooking.restaurantTable = "http://localhost:8080/api/restaurantTables/" + newBooking.restaurantTable
+
+
           this.handleBookingPost(newBooking)
           .then(() => {
             this.fetchBookings()
             newBooking.customer = newCustomer
+            newBooking.restaurantTable = this.state.restaurantTables[tableNumber]
             let now = new Date();
             newBooking.key = now.getTime();
             this.setState({bookings: [...this.state.bookings, newBooking]})
+
           })
         })
     }

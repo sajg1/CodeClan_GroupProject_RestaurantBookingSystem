@@ -48,10 +48,10 @@ class BookingsForm extends Component {
     }
 
     const newBooking = {
-        customer: "http://localhost:8080/api/customer/" + 1,
+        customer: 1,
         dateTime: dateTime,
         numberPeople: numberPeople,
-        restaurantTable: "http://localhost:8080/api/restaurantTables/" + tableNumber,
+        restaurantTable: tableNumber,
         additionalInfo: additionalInfo
       }
 
