@@ -21,7 +21,7 @@ class BookingsView extends Component {
   render() {
     return(
       <div>
-      <h2>New booking</h2>
+      <h2 style={{color: 'red'}}>New booking</h2>
       <BookingsForm onClickSubmit={this.handleBookingSubmit} />
       <BookingsList bookings={this.props.bookings} />
       </div>
