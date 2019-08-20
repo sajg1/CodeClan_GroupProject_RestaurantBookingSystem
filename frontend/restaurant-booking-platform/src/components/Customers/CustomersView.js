@@ -20,8 +20,6 @@ class CustomersView extends Component {
 
   render() {
 
-    console.log("Current Customer: ", this.state.currentCustomer);
-
     return(
       <div>
         <CustomersList
