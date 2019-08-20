@@ -1,6 +1,5 @@
 package com.codeclan.example.RestaurantManagement.components;
 
-
 import com.codeclan.example.RestaurantManagement.models.Booking;
 import com.codeclan.example.RestaurantManagement.models.Customer;
 import com.codeclan.example.RestaurantManagement.models.RestaurantTable;

@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomerDetails from './CustomerDetails';
 
 const Customer = (props) => (
 
