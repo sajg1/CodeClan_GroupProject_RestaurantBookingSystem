@@ -76,7 +76,7 @@ class BookingsForm extends Component {
 
         <textarea name="comment" placeholder="customer info" rows="1" cols="30" value={this.state.additionalCustomerInfo} onChange={this.handleAdditionalCustomerInfoChange}></textarea>
 
-        <input type="datetime-local" value={this.state.dateTime} onChange={this.handleDateTimeChange}/>
+      <input type="datetime-local" value={this.state.dateTime} onChange={this.handleDateTimeChange} max="2021-12-31T23:59" required />
 
 
         <label>Party Size</label>
