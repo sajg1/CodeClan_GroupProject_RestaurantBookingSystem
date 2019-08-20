@@ -13,7 +13,8 @@ class Main extends Component {
     super(props);
     this.state = {
       bookings: [],
-      customers: []
+      customers: [],
+      restaurantTables: []
     }
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
     this.handleBookingPost = this.handleBookingPost.bind(this);
@@ -68,16 +69,15 @@ class Main extends Component {
     const request = new Request();
     const bookingsPromise = request.get('/api/bookings');
     const customersPromise =  request.get('/api/customers');
+    const restaurantTablesPromise = request.get('/api/restaurantTables')
 
-    console.log(bookingsPromise);
-    console.log(customersPromise);
-
-    const promises = [bookingsPromise, customersPromise];
+    const promises = [bookingsPromise, customersPromise, restaurantTablesPromise];
 
     Promise.all(promises).then((data) => {
       this.setState({
         bookings: data[0]._embedded.bookings,
-        customers: data[1]._embedded.customers
+        customers: data[1]._embedded.customers,
+        restaurantTables: data[2]._embedded.restaurantTables
       })
     })
   }
