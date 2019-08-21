@@ -21,7 +21,7 @@ class Main extends Component {
     this.handleBookingPost = this.handleBookingPost.bind(this);
     this.handleBookingDelete = this.handleBookingDelete.bind(this);
     this.handleCustomerDelete = this.handleCustomerDelete.bind(this);
-
+    this.handleBookingEdit = this.handleBookingEdit.bind(this)
   }
 
   handleCustomerPost(customer) {
@@ -76,17 +76,16 @@ class Main extends Component {
           const tableNumber = newBooking.restaurantTable
           newBooking.restaurantTable = "http://localhost:8080/api/restaurantTables/" + newBooking.restaurantTable
 
-
           this.handleBookingPost(newBooking)
           .then(() => {
             this.fetchBookings()
             newBooking.customer = newCustomer
 
-            console.log("tableNumber=",tableNumber)
-            console.log("alltables=",this.state.restaurantTables)
             const foundRestaurantTable=this.state.restaurantTables.find( table=> table.number.toString()===tableNumber)
-            console.log("foundrestable=",foundRestaurantTable)
             newBooking.restaurantTable = foundRestaurantTable
+
+            console.log("foundRestaurantTable=",foundRestaurantTable)
+
             let now = new Date();
             newBooking.key = now.getTime();
             this.setState({bookings: [...this.state.bookings, newBooking]})
@@ -105,12 +104,17 @@ class Main extends Component {
 
   handleBookingEdit({newBooking}) {
     console.log("handleBookingEdit call")
+
     const request = new Request();
     const updatedBookingId=newBooking.id;
-    newBooking.restaurantTable = this.state.restaurantTables[newBooking.restaurantTable]
-    console.log(newBooking)
-    request.patch('api/bookings/'+updatedBookingId,newBooking)
-      // .then( ()=>window.location='/')
+    const tableNumber = newBooking.restaurantTable
+    // const foundRestaurantTable=this.state.restaurantTables.find( table=> table.number.toString()===tableNumber)
+    newBooking.restaurantTable = "http://localhost:8080/api/restaurantTables/" + tableNumber
+    // console.log("foundRestaurantTable=",foundRestaurantTable)
+
+    console.log("URL=",'/api/bookings/'+updatedBookingId)
+    request.patch('/api/bookings/'+updatedBookingId,newBooking)
+      .then( ()=>window.location='/')
   }
 
   findBookingById(id) {

@@ -5,7 +5,6 @@ import './Bookings.css';
 class BookingsList extends Component {
  render() {
    const bookingNodes = this.props.bookings.map(booking => {
-     console.log("This is the booking ID: ",booking.id)
      return (
        <tr className="booking" key={booking.id}>
          <Booking value={booking.value} className="table" booking={booking}>

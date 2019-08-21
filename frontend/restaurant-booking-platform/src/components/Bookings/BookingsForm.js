@@ -60,12 +60,14 @@ class BookingsForm extends Component {
      additionalInfo: additionalCustomerInfo
     }
 
-    const newBooking = {
+    let newBooking = {
         dateTime: dateTime,
         numberPeople: numberPeople,
         restaurantTable: tableNumber,
-        additionalInfo: additionalInfo
+        additionalInfo: additionalInfo,
       }
+      if (this.props.booking)
+        newBooking.id=this.props.booking.id
 
       {/*add logic for is new or not*/}
     this.props.onClickSubmit({customer:customer, newBooking:newBooking,isNewCustomer:true});

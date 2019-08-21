@@ -17,7 +17,7 @@ class BookingsView extends Component {
     return(
       <div className="main">
       <h2>New booking</h2>
-      <BookingsForm booking={null} onClickSubmit={this.props.onBookingSubmit} buttonText={"Add"}/>
+      <BookingsForm booking={null} bookingId={null} onClickSubmit={this.props.onBookingSubmit} buttonText={"Add"}/>
       <BookingsList bookings={this.props.bookings} onDelete={this.props.onDelete} />
       </div>
     )
