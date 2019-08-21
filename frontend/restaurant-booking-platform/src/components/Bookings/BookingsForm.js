@@ -7,14 +7,13 @@ class BookingsForm extends Component {
     super(props);
 
     if(props.booking !== null) {
-      console.log("Booking Prop: ", props.booking);
       this.state = {
         customerName: props.booking.customer.name,
-        phoneNumber: props.booking.customer.phoneNumber,
+        phoneNumber: ""+props.booking.customer.phoneNumber,
         additionalCustomerInfo: props.booking.customer.additionalInfo,
         dateTime: props.booking.dateTime,
-        numberPeople: props.booking.numberPeople,
-        tableNumber: props.booking.restaurantTable.number,
+        numberPeople: ""+props.booking.numberPeople,
+        tableNumber: ""+props.booking.restaurantTable.number,
         additionalInfo: props.booking.additionalInfo
       }
     } else {
@@ -38,15 +37,11 @@ class BookingsForm extends Component {
     this.handleAdditionalCustomerInfoChange = this.handleAdditionalCustomerInfoChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
 
-    console.log("Props: ", this.props);
-
 
   }
 
   handleSubmit(event){
     event.preventDefault();
-    console.log("this=",this)
-    console.log("this.state=",this.state)
     const customerName = this.state.customerName.trim();
     const phoneNumber = this.state.phoneNumber.trim();
     const additionalCustomerInfo = this.state.additionalCustomerInfo.trim();
@@ -58,7 +53,7 @@ class BookingsForm extends Component {
     if (!customerName || !phoneNumber || !numberPeople || !tableNumber){
       return
     }
-    const newCustomer = {
+    const customer = {
      name: customerName,
      phoneNumber: phoneNumber,
      noVisits: 0,
@@ -66,7 +61,6 @@ class BookingsForm extends Component {
     }
 
     const newBooking = {
-        customer: 1,
         dateTime: dateTime,
         numberPeople: numberPeople,
         restaurantTable: tableNumber,
@@ -74,7 +68,7 @@ class BookingsForm extends Component {
       }
 
       {/*add logic for is new or not*/}
-    this.props.onClickSubmit(newCustomer, newBooking,true);
+    this.props.onClickSubmit({customer:customer, newBooking:newBooking,isNewCustomer:true});
   }
 
   handleCustomerChange(event) {this.setState({customerName: event.target.value})}
@@ -86,7 +80,7 @@ class BookingsForm extends Component {
   handleAdditionalInfoChange(event) {this.setState({additionalInfo: event.target.value})}
 
   render(){
-    console.log("Props in Render: ", this.props);
+    //console.log("Props in Render: ", this.props);
     return(
       <form className="bookingForm" onSubmit={this.handleSubmit}>
       <h2>New booking</h2>
@@ -120,10 +114,6 @@ class BookingsForm extends Component {
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
             </select></td>
           </tr>
           <tr>

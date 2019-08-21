@@ -26,24 +26,19 @@ class Main extends Component {
 
   handleCustomerPost(customer) {
     const request = new Request();
-    console.log("new customer=",customer)
     const result = request.post('/api/customers', customer);
-    console.log("customer result=",result)
     return result
   }
 
   handleBookingPost(booking) {
     const request = new Request();
-    console.log("new booking=",booking)
     const result =request.post('/api/bookings', booking)
-    console.log("booking result=",result)
     return result
   }
 
   handleBookingDelete(id){
     const request = new Request();
     const url = '/api/bookings/'+id;
-    console.log("This is the id: ", id)
     request.delete(url);
 
     const updatedBookings = this.state.bookings.map((booking, index) => {
@@ -58,7 +53,6 @@ class Main extends Component {
   handleCustomerDelete(id) {
     const request = new Request();
     const url = '/api/customers/' + id;
-    console.log("This is the id for customer: ", id)
     request.delete(url);
 
     const updatedCustomers = this.state.customers.map((customer, index) => {
@@ -67,12 +61,11 @@ class Main extends Component {
       }
     })
     this.setState({customers: this.state.customers})
-    console.log(this.state.customers);
   }
 
 
-  handleBookingSubmit(customer,newBooking,isNewCustomer) {
-
+  handleBookingSubmit({customer,newBooking,isNewCustomer}) {
+    console.log(customer)
     if (isNewCustomer){
       this.handleCustomerPost(customer)
       .then( newCustomer => {
@@ -88,7 +81,12 @@ class Main extends Component {
           .then(() => {
             this.fetchBookings()
             newBooking.customer = newCustomer
-            newBooking.restaurantTable = this.state.restaurantTables[tableNumber]
+
+            console.log("tableNumber=",tableNumber)
+            console.log("alltables=",this.state.restaurantTables)
+            const foundRestaurantTable=this.state.restaurantTables.find( table=> table.number.toString()===tableNumber)
+            console.log("foundrestable=",foundRestaurantTable)
+            newBooking.restaurantTable = foundRestaurantTable
             let now = new Date();
             newBooking.key = now.getTime();
             this.setState({bookings: [...this.state.bookings, newBooking]})
@@ -105,8 +103,14 @@ class Main extends Component {
     .then(updatedBookings => this.state.bookings = updatedBookings)
   }
 
-  handleBookingEdit() {
-    
+  handleBookingEdit({newBooking}) {
+    console.log("handleBookingEdit call")
+    const request = new Request();
+    const updatedBookingId=newBooking.id;
+    newBooking.restaurantTable = this.state.restaurantTables[newBooking.restaurantTable]
+    console.log(newBooking)
+    request.patch('api/bookings/'+updatedBookingId,newBooking)
+      // .then( ()=>window.location='/')
   }
 
   findBookingById(id) {
@@ -114,7 +118,7 @@ class Main extends Component {
     const booking = this.state.bookings.find((booking) => {
       return booking.id = parseInt(id)
     });
-    console.log("Bookings in findBookingById: ", this.state.bookings);
+    // console.log("Bookings in findBookingById: ", this.state.bookings);
     return booking;
   }
 
@@ -131,7 +135,7 @@ class Main extends Component {
         bookings: data[0]._embedded.bookings,
         customers: data[1]._embedded.customers,
         restaurantTables: data[2]._embedded.restaurantTables
-      }, () => console.log("Bookings in ComponentDidMount: ", this.state.bookings))
+      })
     })
   }
 

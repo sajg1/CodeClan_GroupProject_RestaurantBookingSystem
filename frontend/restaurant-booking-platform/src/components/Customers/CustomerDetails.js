@@ -9,7 +9,6 @@ const CustomerDetails = (props) => {
 
   function showCustomer() {
     if(props.customer != null) {
-      console.log("Customer id: ", props.customer.id)
       return(
         <div>
           <h2>Customer Name: {props.customer.name}</h2>
@@ -21,7 +20,6 @@ const CustomerDetails = (props) => {
       )
     }
 
-    console.log("Customer is Null");
   }
 
   return (
