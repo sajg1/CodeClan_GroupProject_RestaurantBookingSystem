@@ -8,12 +8,12 @@ const Booking = ({ booking }) => {
 
   return (
     <Fragment>
-        <td>{booking.customer.name}</td>
-        <td>{booking.customer.phoneNumber}</td>
-        <td>{date.toLocaleString('en-GB', options)}</td>
-        <td>{booking.numberPeople}</td>
-        <td>{booking.restaurantTable.num}</td>
-      </Fragment>
+      <td>{booking.customer.name}</td>
+      <td>{booking.customer.phoneNumber}</td>
+      <td>{date.toLocaleString('en-GB', options)}</td>
+      <td>{booking.numberPeople}</td>
+      <td>{booking.restaurantTable.number}</td>
+    </Fragment>
   );
 };
 

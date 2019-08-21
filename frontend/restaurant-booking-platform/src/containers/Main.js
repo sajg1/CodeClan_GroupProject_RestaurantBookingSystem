@@ -19,6 +19,7 @@ class Main extends Component {
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
     this.handleBookingPost = this.handleBookingPost.bind(this);
     this.handleBookingDelete = this.handleBookingDelete.bind(this);
+    this.handleCustomerDelete = this.handleCustomerDelete.bind(this);
 
   }
 
@@ -51,6 +52,21 @@ class Main extends Component {
     })
     this.setState({bookings: this.state.bookings})
     console.log(this.state.bookings);
+  }
+
+  handleCustomerDelete(id) {
+    const request = new Request();
+    const url = '/api/customers/' + id;
+    console.log("This is the id for customer: ", id)
+    request.delete(url);
+
+    const updatedCustomers = this.state.customers.map((customer, index) => {
+      if (customer.id == id) {
+        this.state.customers.splice(index,1);
+      }
+    })
+    this.setState({customers: this.state.customers})
+    console.log(this.state.customers);
   }
 
 
@@ -118,7 +134,7 @@ class Main extends Component {
               exact path="/"
               render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} onDelete={this.handleBookingDelete} />}
             />
-            <Route path="/customers" render={() => <CustomersView customers={this.state.customers}/>} />
+          <Route path="/customers" render={() => <CustomersView customers={this.state.customers} onDelete={this.handleCustomerDelete}/>} />
 
             <Route component={ErrorPage} />
           </Switch>
