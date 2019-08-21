@@ -4,9 +4,35 @@
 }
 
 .customerList {
+    float: top;
+    width: 90%;
+    border-color: "black";
+    border-style: solid;
+    border-width: 1px;
+    padding: 20px;
+  }
+
+.customerDetails {
+  float: bottom;
+  width: 90%;
   border-color: "black";
   border-style: solid;
   border-width: 1px;
-  float: left;
-  padding: 30px;
+  padding: 20px;
+}
+
+table.customer {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
 }
