@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomersList from './CustomersList';
 import CustomerDetails from './CustomerDetails';
+import './Customer.css';
 
 class CustomersView extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class CustomersView extends Component {
   render() {
 
     return(
-      <div className="main">
+      <div className="customer-view">
         <CustomersList
           customers={this.props.customers}
           onCustomerSelected={this.handleCustomerSelected} />

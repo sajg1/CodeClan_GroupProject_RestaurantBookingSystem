@@ -1,6 +1,5 @@
 import React from 'react';
-import '../Bookings/Bookings.css';
-
+import "../Bookings/Bookings.css";
 
 const CustomersList = (props) => {
 

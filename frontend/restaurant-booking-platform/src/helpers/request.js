@@ -11,7 +11,13 @@ class Request {
       body: JSON.stringify(payload)
     })
     .then((res) => res.json());
+  }
 
+  delete(url) {
+    return fetch(url, {
+      method: "DELETE",
+      headers: {'Content-Type': 'application/json'}
+    })
   }
 }
 

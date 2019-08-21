@@ -18,7 +18,7 @@ class BookingsView extends Component {
       <div className="main">
       <h2>New booking</h2>
       <BookingsForm onClickSubmit={this.props.onBookingSubmit}/>
-      <BookingsList bookings={this.props.bookings} />
+      <BookingsList bookings={this.props.bookings} onDelete={this.props.onDelete} />
       </div>
     )
   }

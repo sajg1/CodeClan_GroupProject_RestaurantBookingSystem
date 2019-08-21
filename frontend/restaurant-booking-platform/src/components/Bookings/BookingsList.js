@@ -5,20 +5,22 @@ import './Bookings.css';
 class BookingsList extends Component {
  render() {
    const bookingNodes = this.props.bookings.map(booking => {
-
+     console.log("This is the booking ID: ",booking.id)
      return (
-       <span>
-       <Booking value={booking.value} key={booking.id} className="table" booking={booking}>
-       </Booking>
-       <button>Delete</button>
-       </span>
+       <tr className="booking" key={booking.id}>
+         <Booking value={booking.value} className="table" booking={booking}>
+         </Booking>
+         <td>
+        <button onClick={() => this.props.onDelete(booking.id)} value={booking.id}>DELETE</button>
+        </td>
+       </tr>
      );
    });
    return (
      <div className="bookingList">
        <h2>Restaurant Bookings</h2>
        <table>
-        <tbody>
+         <tbody>
          <tr>
            <th>Name</th>
            <th>Phone</th>
@@ -28,6 +30,7 @@ class BookingsList extends Component {
          </tr>
          {bookingNodes}
          </tbody>
+
        </table>
      </div>
    )
