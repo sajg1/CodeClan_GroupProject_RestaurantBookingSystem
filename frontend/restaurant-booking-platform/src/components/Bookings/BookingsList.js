@@ -9,6 +9,7 @@ class BookingsList extends Component {
        <tr className="booking" key={booking.id}>
         <Booking value={booking.value} className="table" booking={booking}></Booking>
         <td>
+          <button onClick={() => this.props.onEdit(booking.id)} value={booking.id}>EDIT</button>
           <button onClick={() => this.props.onDelete(booking.id)} value={booking.id}>DELETE</button>
         </td>
        </tr>

@@ -154,7 +154,7 @@ class Main extends Component {
           <Switch>
             <Route
               exact path="/"
-              render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} onDelete={this.handleBookingDelete} />}
+              render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} onEdit={(id)=>window.location='/bookings/edit/'+id} onDelete={this.handleBookingDelete} />}
             />
             <Route
               exact path="/bookings/edit/:id"

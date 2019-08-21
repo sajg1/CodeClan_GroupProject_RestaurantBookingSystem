@@ -7,7 +7,7 @@ import './Bookings.css';
 const BookingsView = (props) => (
       <div className="main">
       <BookingsForm booking={null} onClickSubmit={props.onBookingSubmit} buttonText={"Add"}/>
-      <BookingsList bookings={props.bookings} onDelete={props.onDelete} />
+      <BookingsList bookings={props.bookings} onEdit={props.onEdit} onDelete={props.onDelete} />
       </div>
 )
 
