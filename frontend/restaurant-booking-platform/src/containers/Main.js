@@ -19,6 +19,7 @@ class Main extends Component {
     this.handleBookingSubmit = this.handleBookingSubmit.bind(this);
     this.handleBookingPost = this.handleBookingPost.bind(this);
     this.handleBookingDelete = this.handleBookingDelete.bind(this);
+    this.handleCustomerDelete = this.handleCustomerDelete.bind(this);
 
   }
 
@@ -59,7 +60,7 @@ class Main extends Component {
     console.log("This is the id for customer: ", id)
     request.delete(url);
 
-    const updateCustomers = this.state.customers.map((customer, index) => {
+    const updatedCustomers = this.state.customers.map((customer, index) => {
       if (customer.id == id) {
         this.state.customers.splice(index,1);
       }
