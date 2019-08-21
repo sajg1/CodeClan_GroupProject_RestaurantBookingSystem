@@ -65,7 +65,7 @@ class Main extends Component {
 
 
   handleBookingSubmit({customer,newBooking,isNewCustomer}) {
-    console.log(customer)
+    console.log("handleBookingSubmit")
     if (isNewCustomer){
       this.handleCustomerPost(customer)
       .then( newCustomer => {
@@ -78,29 +78,32 @@ class Main extends Component {
 
           this.handleBookingPost(newBooking)
           .then(() => {
-            this.fetchBookings()
+            console.log("handleBookingPost")
+          //  this.fetchBookings()
             newBooking.customer = newCustomer
 
             const foundRestaurantTable=this.state.restaurantTables.find( table=> table.number.toString()===tableNumber)
             newBooking.restaurantTable = foundRestaurantTable
 
-            console.log("foundRestaurantTable=",foundRestaurantTable)
-
             let now = new Date();
             newBooking.key = now.getTime();
-            this.setState({bookings: [...this.state.bookings, newBooking]})
 
+            this.setState({bookings: [...this.state.bookings, newBooking]}, ()=> console.log("this.state.bookings inside handleBookingSubmit=",this.state.bookings))
           })
         })
     }
 
   }
-
-  fetchBookings() {
-    const request = new Request();
-    request.get('/api/bookings')
-    .then(updatedBookings => this.setState({bookings:updatedBookings}))
-  }
+  //
+  // fetchBookings() {
+  //   console.log("fetchBookings")
+  //   const request = new Request();
+  //   request.get('/api/bookings')
+  //   .then(updatedBookings => {
+  //   //  this.setState({bookings:updatedBookings._embedded.bookings}),()=>console.log("the culprit",this.state.bookings)
+  //     console.log("inside then of fetchBookings",updatedBookings._embedded.bookings)}
+  //      )
+  // }
 
   handleBookingEdit({newBooking}) {
     console.log("handleBookingEdit call")
@@ -139,7 +142,7 @@ class Main extends Component {
         bookings: data[0]._embedded.bookings,
         customers: data[1]._embedded.customers,
         restaurantTables: data[2]._embedded.restaurantTables
-      })
+      },()=>console.log("bookings after fetching (GET)=",this.state.bookings))
     })
   }
 
@@ -154,7 +157,7 @@ class Main extends Component {
           <Switch>
             <Route
               exact path="/"
-              render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} onEdit={(id)=>window.location='/bookings/edit/'+id} onDelete={this.handleBookingDelete} />}
+              render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} restaurantTables={this.state.restaurantTables} onEdit={(id)=>window.location='/bookings/edit/'+id} onDelete={this.handleBookingDelete} />}
             />
             <Route
               exact path="/bookings/edit/:id"
