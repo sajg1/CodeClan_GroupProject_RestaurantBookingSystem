@@ -19,14 +19,11 @@
 .bookingForm {
   float: left;
   width: 30%;
-  margin-top: 6px;
+  /* margin-top: 6px; */
   border-color: "black";
   border-style: solid;
   border-width: 1px;
   padding: 20px;
-}
-
-.th:after {
 }
 
 .bookingList {
@@ -34,7 +31,8 @@
   border-style: solid;
   border-width: 1px;
   float: right;
-  padding-bottom: 5px;
+  padding: 30px;
+  width: 60%;
 }
 
 input, textarea {
@@ -52,9 +50,7 @@ table {
 th, td {
   padding: 8px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 tr:hover {
