@@ -87,7 +87,6 @@ class BookingsForm extends Component {
       <h2>New booking</h2>
       <table className="booking">
         <tbody>
-<<<<<<< HEAD
           <tr>
             <th>Customer name: </th>
             <td><input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/></td>
@@ -116,10 +115,6 @@ class BookingsForm extends Component {
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
             </select></td>
           </tr>
           <tr>
@@ -130,46 +125,6 @@ class BookingsForm extends Component {
             <td><input type="submit" className="button" value={this.props.buttonText}/></td>
           </tbody>
         </table>
-=======
-        <tr>
-          <th>Customer name: </th>
-          <td><input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/></td>
-        </tr>
-        <tr>
-          <th>Phone number: </th>
-          <td><input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/></td>
-        </tr>
-        <tr>
-          <th>Comment: </th>
-          <td><textarea name="comment" placeholder="customer info" rows="1" cols="30" value={this.state.additionalCustomerInfo} onChange={this.handleAdditionalCustomerInfoChange}></textarea></td>
-        </tr>
-        <tr>
-          <th>Date and time: </th>
-          <td><input type="datetime-local" value={this.state.dateTime} onChange={this.handleDateTimeChange} max="2021-12-31T23:59" required /></td>
-        </tr>
-        <tr>
-          <th><label>Party size:</label></th>
-          <td><input type="number" min="1" max="10"  value={this.state.numberPeople} onChange={this.handlenumberPeopleChange}/></td>
-        </tr>
-        <tr>
-          <th><label>Table number:</label></th>
-          <td><select name="table" value={this.state.tableNumber} onChange={this.handleTableNumberChange}>
-          <option value="" disabled>table</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          </select></td>
-        </tr>
-        <tr>
-          <th>Additional notes: </th>
-          <td><textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.state.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea></td>
-        </tr>
-        <th></th>
-        <td><input type="submit" value={this.props.buttonText}/></td>
-        </tbody>
-      </table>
->>>>>>> e7a94bef81e6c9a6b8867181549d840bb20b7730
       </form>
     )
   }
