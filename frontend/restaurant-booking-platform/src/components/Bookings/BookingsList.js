@@ -27,6 +27,7 @@ class BookingsList extends Component {
            <th>Date & Time</th>
            <th>Pax</th>
            <th>Table number</th>
+           <th></th>
          </tr>
          {bookingNodes}
          </tbody>
