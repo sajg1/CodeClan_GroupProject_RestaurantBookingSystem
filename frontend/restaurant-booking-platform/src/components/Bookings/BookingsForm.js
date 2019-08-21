@@ -89,6 +89,7 @@ class BookingsForm extends Component {
     console.log("Props in Render: ", this.props);
     return(
       <form className="bookingForm" onSubmit={this.handleSubmit}>
+      <h2>New booking</h2>
         <input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/>
 
         <input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/>
