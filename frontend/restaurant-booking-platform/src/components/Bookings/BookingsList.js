@@ -5,13 +5,12 @@ import './Bookings.css';
 class BookingsList extends Component {
  render() {
    const bookingNodes = this.props.bookings.map(booking => {
-     console.log("This is the booking ID: ",booking.id)
      return (
        <tr className="booking" key={booking.id}>
-         <Booking value={booking.value} className="table" booking={booking}>
-         </Booking>
-         <td>
-        <button onClick={() => this.props.onDelete(booking.id)} value={booking.id}>DELETE</button>
+        <Booking value={booking.value} className="table" booking={booking}></Booking>
+        <td>
+          <button onClick={() => this.props.onEdit(booking.id)} value={booking.id}>EDIT</button>
+          <button onClick={() => this.props.onDelete(booking.id)} value={booking.id}>DELETE</button>
         </td>
        </tr>
      );
@@ -36,6 +35,6 @@ class BookingsList extends Component {
        </table>
      </div>
    )
-}
+ }
 }
 export default BookingsList;
