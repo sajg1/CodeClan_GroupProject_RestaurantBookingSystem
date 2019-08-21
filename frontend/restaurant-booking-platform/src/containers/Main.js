@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BookingsView from '../components/Bookings/BookingsView';
+import EditBookingView from '../components/Bookings/EditBookingView';
 import CustomersView from '../components/Customers/CustomersView';
 import ErrorPage from '../components/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -104,6 +105,19 @@ class Main extends Component {
     .then(updatedBookings => this.state.bookings = updatedBookings)
   }
 
+  handleBookingEdit() {
+    
+  }
+
+  findBookingById(id) {
+
+    const booking = this.state.bookings.find((booking) => {
+      return booking.id = parseInt(id)
+    });
+    console.log("Bookings in findBookingById: ", this.state.bookings);
+    return booking;
+  }
+
   componentDidMount() {
     const request = new Request();
     const bookingsPromise = request.get('/api/bookings');
@@ -117,7 +131,7 @@ class Main extends Component {
         bookings: data[0]._embedded.bookings,
         customers: data[1]._embedded.customers,
         restaurantTables: data[2]._embedded.restaurantTables
-      })
+      }, () => console.log("Bookings in ComponentDidMount: ", this.state.bookings))
     })
   }
 
@@ -134,7 +148,20 @@ class Main extends Component {
               exact path="/"
               render={() => <BookingsView onBookingSubmit={this.handleBookingSubmit} bookings={this.state.bookings} onDelete={this.handleBookingDelete} />}
             />
-          <Route path="/customers" render={() => <CustomersView customers={this.state.customers} onDelete={this.handleCustomerDelete}/>} />
+            <Route
+              exact path="/bookings/edit/:id"
+              render={(props) => {
+
+                const id = props.match.params.id
+                if(this.state.bookings.length === 0) {
+                  return;
+                }
+                const booking = this.findBookingById(id);
+                return <EditBookingView booking={booking} customers={this.state.customers} restaurantTables={this.state.restaurantTables}
+                handleBookingEdit={this.handleBookingEdit} />
+              }} />
+
+              <Route path="/customers" render={() => <CustomersView customers={this.state.customers} onDelete={this.handleCustomerDelete}/>} />
 
             <Route component={ErrorPage} />
           </Switch>
