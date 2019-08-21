@@ -1,4 +1,5 @@
 import React from "react";
+import './Customer.css';
 
 const CustomerDetails = (props) => {
 
@@ -12,11 +13,28 @@ const CustomerDetails = (props) => {
       console.log("Customer id: ", props.customer.id)
       return(
         <div>
-          <h2>Customer Name: {props.customer.name}</h2>
-          <p>Customer Phone Number: {props.customer.phoneNumber}</p>
-          <p>Number of Visits: {props.customer.noVisits}</p>
-          <p>Additional Information: {props.customer.additionalInfo}</p>
-          <button onClick={localHandleDelete} value={props.customer.id}>DELETE</button>
+          <table>
+            <tbody>
+              <tr>
+                <th>Customer Name: </th>
+                <td>{props.customer.name}</td>
+              </tr>
+              <tr>
+                <th>Customer Phone Number:</th> <td>{props.customer.phoneNumber}</td>
+              </tr>
+              <tr>
+                <th>Number of Visits: </th>
+                <td>{props.customer.noVisits}</td>
+              </tr>
+              <tr>
+                <th>Additional Information: </th> <td>{props.customer.additionalInfo}</td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><button onClick={localHandleDelete} value={props.customer.id}>DELETE</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )
     }
