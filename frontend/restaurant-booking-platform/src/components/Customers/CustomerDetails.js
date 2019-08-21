@@ -13,7 +13,7 @@ const CustomerDetails = (props) => {
       console.log("Customer id: ", props.customer.id)
       return(
         <div>
-          <table>
+          <table className="customer">
             <tbody>
               <tr>
                 <th>Customer Name: </th>

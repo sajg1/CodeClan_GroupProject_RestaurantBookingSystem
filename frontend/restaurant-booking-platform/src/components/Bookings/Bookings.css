@@ -13,8 +13,8 @@
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
-.booking:hover {background-color:#f5f5f5;
-}
+/* .booking:hover {background-color:#f5f5f5;
+} */
 
 .bookingForm {
   float: left;
@@ -52,6 +52,6 @@ th, td {
   border: 1px solid #ddd;
 }
 
-tr:hover {
+td:hover {
   background-color: #f5f5f5;
 }

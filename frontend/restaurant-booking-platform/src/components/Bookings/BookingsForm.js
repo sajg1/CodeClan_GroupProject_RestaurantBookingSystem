@@ -90,7 +90,7 @@ class BookingsForm extends Component {
     return(
       <form className="bookingForm" onSubmit={this.handleSubmit}>
       <h2>New booking</h2>
-      <table>
+      <table className="booking">
         <tbody>
           <tr>
             <th>Customer name: </th>
