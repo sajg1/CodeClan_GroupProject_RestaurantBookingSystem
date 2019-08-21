@@ -7,10 +7,9 @@ class BookingsList extends Component {
    const bookingNodes = this.props.bookings.map(booking => {
      return (
        <tr className="booking" key={booking.id}>
-         <Booking value={booking.value} className="table" booking={booking}>
-         </Booking>
-         <td>
-        <button onClick={() => this.props.onDelete(booking.id)} value={booking.id}>DELETE</button>
+        <Booking value={booking.value} className="table" booking={booking}></Booking>
+        <td>
+          <button onClick={() => this.props.onDelete(booking.id)} value={booking.id}>DELETE</button>
         </td>
        </tr>
      );
@@ -34,6 +33,6 @@ class BookingsList extends Component {
        </table>
      </div>
    )
-}
+ }
 }
 export default BookingsList;

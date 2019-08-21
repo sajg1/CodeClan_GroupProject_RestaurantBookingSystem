@@ -41,8 +41,8 @@ class Main extends Component {
     const url = '/api/bookings/'+id;
     request.delete(url);
 
-    const updatedBookings = this.state.bookings.map((booking, index) => {
-      if (booking.id == id) {
+    this.state.bookings.forEach((booking, index) => {
+      if (booking.id === id) {
         this.state.bookings.splice(index, 1);
       }
     })
@@ -55,8 +55,8 @@ class Main extends Component {
     const url = '/api/customers/' + id;
     request.delete(url);
 
-    const updatedCustomers = this.state.customers.map((customer, index) => {
-      if (customer.id == id) {
+    this.state.customers.forEach((customer, index) => {
+      if (customer.id === id) {
         this.state.customers.splice(index,1);
       }
     })
@@ -98,8 +98,8 @@ class Main extends Component {
 
   fetchBookings() {
     const request = new Request();
-    const bookingsPromise = request.get('/api/bookings')
-    .then(updatedBookings => this.state.bookings = updatedBookings)
+    request.get('/api/bookings')
+    .then(updatedBookings => this.setState({bookings:updatedBookings}))
   }
 
   handleBookingEdit({newBooking}) {

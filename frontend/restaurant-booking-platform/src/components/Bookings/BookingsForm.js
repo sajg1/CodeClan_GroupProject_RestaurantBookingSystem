@@ -54,22 +54,21 @@ class BookingsForm extends Component {
       return
     }
     const customer = {
-     name: customerName,
-     phoneNumber: phoneNumber,
-     noVisits: 0,
-     additionalInfo: additionalCustomerInfo
+      name: customerName,
+      phoneNumber: phoneNumber,
+      noVisits: 0,
+      additionalInfo: additionalCustomerInfo
     }
 
     let newBooking = {
-        dateTime: dateTime,
-        numberPeople: numberPeople,
-        restaurantTable: tableNumber,
-        additionalInfo: additionalInfo,
-      }
-      if (this.props.booking)
-        newBooking.id=this.props.booking.id
+      dateTime: dateTime,
+      numberPeople: numberPeople,
+      restaurantTable: tableNumber,
+      additionalInfo: additionalInfo,
+    }
+    if (this.props.booking)
+    newBooking.id=this.props.booking.id
 
-      {/*add logic for is new or not*/}
     this.props.onClickSubmit({customer:customer, newBooking:newBooking,isNewCustomer:true});
   }
 
@@ -88,44 +87,44 @@ class BookingsForm extends Component {
       <h2>New booking</h2>
       <table className="booking">
         <tbody>
-          <tr>
-            <th>Customer name: </th>
-            <td><input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/></td>
-          </tr>
-          <tr>
-            <th>Phone number: </th>
-            <td><input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/></td>
-          </tr>
-          <tr>
-            <th>Comment: </th>
-            <td><textarea name="comment" placeholder="customer info" rows="1" cols="30" value={this.state.additionalCustomerInfo} onChange={this.handleAdditionalCustomerInfoChange}></textarea></td>
-          </tr>
-          <tr>
-            <th>Date and time: </th>
-            <td><input type="datetime-local" value={this.state.dateTime} onChange={this.handleDateTimeChange} max="2021-12-31T23:59" required /></td>
-          </tr>
-          <tr>
-            <th><label>Party size:</label></th>
-            <td><input type="number" min="1" max="10"  value={this.state.numberPeople} onChange={this.handlenumberPeopleChange}/></td>
-          </tr>
-          <tr>
-            <th><label>Table number:</label></th>
-            <td><select name="table" value={this.state.tableNumber} onChange={this.handleTableNumberChange}>
-              <option value="" disabled>table</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select></td>
-          </tr>
-          <tr>
-            <th>Additional notes: </th>
-            <td><textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.state.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea></td>
-          </tr>
-            <th></th>
-            <td><input type="submit" value={this.props.buttonText}/></td>
-          </tbody>
-        </table>
+        <tr>
+          <th>Customer name: </th>
+          <td><input type="text" placeholder="Customer name" value={this.state.customerName} onChange={this.handleCustomerChange}/></td>
+        </tr>
+        <tr>
+          <th>Phone number: </th>
+          <td><input type="text" placeholder="Phone number" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange}/></td>
+        </tr>
+        <tr>
+          <th>Comment: </th>
+          <td><textarea name="comment" placeholder="customer info" rows="1" cols="30" value={this.state.additionalCustomerInfo} onChange={this.handleAdditionalCustomerInfoChange}></textarea></td>
+        </tr>
+        <tr>
+          <th>Date and time: </th>
+          <td><input type="datetime-local" value={this.state.dateTime} onChange={this.handleDateTimeChange} max="2021-12-31T23:59" required /></td>
+        </tr>
+        <tr>
+          <th><label>Party size:</label></th>
+          <td><input type="number" min="1" max="10"  value={this.state.numberPeople} onChange={this.handlenumberPeopleChange}/></td>
+        </tr>
+        <tr>
+          <th><label>Table number:</label></th>
+          <td><select name="table" value={this.state.tableNumber} onChange={this.handleTableNumberChange}>
+          <option value="" disabled>table</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          </select></td>
+        </tr>
+        <tr>
+          <th>Additional notes: </th>
+          <td><textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.state.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea></td>
+        </tr>
+        <th></th>
+        <td><input type="submit" value={this.props.buttonText}/></td>
+        </tbody>
+      </table>
       </form>
     )
   }
