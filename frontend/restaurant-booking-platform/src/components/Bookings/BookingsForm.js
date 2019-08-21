@@ -18,13 +18,13 @@ class BookingsForm extends Component {
       }
     } else {
       this.state = {
-        customerName: 'Name',
-        phoneNumber: '44',
-        additionalCustomerInfo: 'Gluten Tolerant',
+        customerName: '',
+        phoneNumber: '',
+        additionalCustomerInfo: '',
         dateTime: '',
-        numberPeople: '2',
+        numberPeople: '1',
         tableNumber: '1',
-        additionalInfo: 'Birthday Party'
+        additionalInfo: ''
       }
     }
 
