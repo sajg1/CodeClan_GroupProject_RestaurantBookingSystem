@@ -102,7 +102,7 @@ class BookingsForm extends Component {
           </tr>
           <tr>
             <th>Comment: </th>
-            <td><textarea name="comment" placeholder="customer info" rows="1" cols="30" value={this.state.additionalCustomerInfo} onChange={this.handleAdditionalCustomerInfoChange}></textarea></td>
+            <td><textarea name="comment" placeholder="customer info" value={this.state.additionalCustomerInfo} onChange={this.handleAdditionalCustomerInfoChange}></textarea></td>
           </tr>
           <tr>
             <th>Date and time: </th>
@@ -128,10 +128,10 @@ class BookingsForm extends Component {
           </tr>
           <tr>
             <th>Additional notes: </th>
-            <td><textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.state.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea></td>
+            <td><textarea name="comment" placeholder="additional notes" value={this.state.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea></td>
           </tr>
             <th></th>
-            <td><input type="submit" value={this.props.buttonText}/></td>
+            <td><input type="submit" className="button" value={this.props.buttonText}/></td>
           </tbody>
         </table>
       </form>

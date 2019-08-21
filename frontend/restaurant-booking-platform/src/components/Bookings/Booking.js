@@ -13,6 +13,7 @@ const Booking = ({ booking }) => {
       <td>{date.toLocaleString('en-GB', options)}</td>
       <td>{booking.numberPeople}</td>
       <td>{booking.restaurantTable.number}</td>
+      <td>{booking.additionalInfo}</td>
     </Fragment>
   );
 };

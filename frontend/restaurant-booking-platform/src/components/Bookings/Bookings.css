@@ -25,6 +25,10 @@
   padding: 20px;
 }
 
+/* .bookingForm input, .bookingForm textarea {
+  width: 150px;
+} */
+
 .bookingList {
   float: right;
   width: 60%;
@@ -34,16 +38,22 @@
   padding: 20px;
 }
 
-input, textarea {
+.bookingTable{
+  width: 100%;
+}
+
+input:not(.button), textarea {
   border: 2px solid #555;
   border-radius: 4px;
   height: 25px;
   padding: 5px 20px;
+  resize: none;
+  width: 150px;
 }
 
 table {
   border-collapse: collapse;
-  width: 100%;
+  max-width: 100%;
 }
 
 th, td {
@@ -54,4 +64,15 @@ th, td {
 
 td:hover {
   background-color: #f5f5f5;
+}
+
+.button{
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 1200px){
+  .bookingForm, .bookingList {
+    float: none;
+    width: 90%;
+  }
 }

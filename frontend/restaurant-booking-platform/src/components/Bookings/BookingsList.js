@@ -19,7 +19,7 @@ class BookingsList extends Component {
    return (
      <div className="bookingList">
        <h2>Restaurant Bookings</h2>
-       <table>
+       <table className="bookingTable">
          <tbody>
          <tr>
            <th>Name</th>
@@ -27,6 +27,7 @@ class BookingsList extends Component {
            <th>Date & Time</th>
            <th>Pax</th>
            <th>Table number</th>
+           <th>Additional Information</th>
            <th></th>
          </tr>
          {bookingNodes}
