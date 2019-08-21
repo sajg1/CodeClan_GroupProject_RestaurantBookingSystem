@@ -6,7 +6,7 @@ const EditBookingView = (props) => {
 
   return(
     <div className="main">
-    <BookingsForm booking={props.booking} onClickSubmit={props.handleBookingEdit} buttonText={"Edit"}/>
+    <BookingsForm booking={props.booking}  restaurantTables={props.restaurantTables}  onClickSubmit={props.handleBookingEdit} buttonText={"Save Changes"}/>
     </div>
   )
 

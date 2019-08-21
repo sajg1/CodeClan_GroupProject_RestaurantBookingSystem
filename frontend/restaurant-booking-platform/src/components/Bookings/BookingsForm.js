@@ -18,13 +18,13 @@ class BookingsForm extends Component {
       }
     } else {
       this.state = {
-        customerName: 'Name',
-        phoneNumber: '44',
-        additionalCustomerInfo: 'Gluten Tolerant',
+        customerName: '',
+        phoneNumber: '',
+        additionalCustomerInfo: '',
         dateTime: '',
-        numberPeople: '2',
+        numberPeople: '1',
         tableNumber: '1',
-        additionalInfo: 'Birthday Party'
+        additionalInfo: ''
       }
     }
 
@@ -80,6 +80,22 @@ class BookingsForm extends Component {
   handleAdditionalCustomerInfoChange(event) {this.setState({additionalCustomerInfo: event.target.value})}
   handleAdditionalInfoChange(event) {this.setState({additionalInfo: event.target.value})}
 
+  renderTableOptions() {
+    if(this.props.restaurantTables.length === 0){
+      return null
+    }
+
+    let allTables = [];
+
+    for(let i = 0; i < this.props.restaurantTables.length; i++) {
+      const table=this.props.restaurantTables[i]
+      const tableOption = <option value={table.id}>{table.number}</option>
+      allTables.push(tableOption)
+    }
+
+    return allTables
+  }
+
   render(){
     //console.log("Props in Render: ", this.props);
     return(
@@ -111,10 +127,7 @@ class BookingsForm extends Component {
             <th><label>Table number:</label></th>
             <td><select name="table" value={this.state.tableNumber} onChange={this.handleTableNumberChange}>
               <option value="" disabled>table</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              {this.renderTableOptions()}
             </select></td>
           </tr>
           <tr>

@@ -4,6 +4,8 @@ import './Bookings.css';
 
 class BookingsList extends Component {
  render() {
+   //if (this.props.bookings===null || this.props.bookings===undefined || this.props.bookings.length===0)
+    // return null
    const bookingNodes = this.props.bookings.map(booking => {
      return (
        <tr className="booking" key={booking.id}>
