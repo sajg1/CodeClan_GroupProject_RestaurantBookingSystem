@@ -6,18 +6,16 @@ import logo2 from '../../style/cb.png'
 
 const NavBar = () => (
   <div className="nav">
-  <ul>
-    <li>
-      <Link to="/">test1
+    <p>
+      <Link to="/">
       <img src={logo1} className="logo1" alt="logo1"/>
       </Link>
-    </li>
-    <li>
-      <Link to="/customers">test2
+    </p>
+    <p>
+      <Link to="/customers">
       <img src={logo2} className="logo2" alt="logo2"/>
       </Link>
-    </li>
-  </ul>
+    </p>
   </div>
 )
 
