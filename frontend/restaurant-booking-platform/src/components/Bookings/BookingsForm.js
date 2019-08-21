@@ -5,15 +5,29 @@ class BookingsForm extends Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      customerName: 'Name',
-      phoneNumber: '44',
-      additionalCustomerInfo: 'Gluten Tolerant',
-      dateTime: '',
-      numberPeople: '2',
-      tableNumber: '1',
-      additionalInfo: 'Birthday Party'
-    };
+
+    if(props.booking !== null) {
+      console.log("Booking Prop: ", props.booking);
+      this.state = {
+        customerName: props.booking.customer.name,
+        phoneNumber: props.booking.customer.phoneNumber,
+        additionalCustomerInfo: props.booking.customer.additionalInfo,
+        dateTime: props.booking.dateTime,
+        numberPeople: props.booking.numberPeople,
+        tableNumber: props.booking.restaurantTable.number,
+        additionalInfo: props.booking.additionalInfo
+      }
+    } else {
+      this.state = {
+        customerName: 'Name',
+        phoneNumber: '44',
+        additionalCustomerInfo: 'Gluten Tolerant',
+        dateTime: '',
+        numberPeople: '2',
+        tableNumber: '1',
+        additionalInfo: 'Birthday Party'
+      }
+    }
 
     this.handleCustomerChange = this.handleCustomerChange.bind(this);
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
@@ -23,6 +37,10 @@ class BookingsForm extends Component {
     this.handleAdditionalInfoChange = this.handleAdditionalInfoChange.bind(this);
     this.handleAdditionalCustomerInfoChange = this.handleAdditionalCustomerInfoChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
+
+    console.log("Props: ", this.props);
+
+
   }
 
   handleSubmit(event){
@@ -68,6 +86,7 @@ class BookingsForm extends Component {
   handleAdditionalInfoChange(event) {this.setState({additionalInfo: event.target.value})}
 
   render(){
+    console.log("Props in Render: ", this.props);
     return(
       <form className="bookingForm" onSubmit={this.handleSubmit}>
       <h2>New booking</h2>
@@ -112,7 +131,7 @@ class BookingsForm extends Component {
             <td><textarea name="comment" placeholder="additional notes" rows="1" cols="30" value={this.state.additionalInfo} onChange={this.handleAdditionalInfoChange}></textarea></td>
           </tr>
             <th></th>
-            <td><input type="submit" value="Add"/></td>
+            <td><input type="submit" value={this.props.buttonText}/></td>
           </tbody>
         </table>
       </form>

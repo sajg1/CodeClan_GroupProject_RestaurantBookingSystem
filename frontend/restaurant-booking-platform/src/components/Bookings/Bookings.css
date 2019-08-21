@@ -19,20 +19,19 @@
 .bookingForm {
   float: left;
   width: 30%;
-  /* margin-top: 6px; */
   border-color: "black";
   border-style: solid;
   border-width: 1px;
-  padding: 20px;
+  padding: 30px;
 }
 
 .bookingList {
+  float: right;
+  width: 60%;
   border-color: "black";
   border-style: solid;
   border-width: 1px;
-  float: right;
   padding: 30px;
-  width: 60%;
 }
 
 input, textarea {
